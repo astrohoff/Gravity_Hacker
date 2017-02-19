@@ -40,7 +40,6 @@ public class PlayerMovemnt : MonoBehaviour {
 			if (Input.GetKey ("d")) {
 				vel.x = groundspeed * speed;
 				player.transform.localScale = forward;
-				player.GetComponent<Rigidbody2D> ().gravityScale = -1;
 			} else if (Input.GetKey ("a")) {
 				vel.x = -groundspeed * speed;
 				player.transform.localScale = backward;
@@ -51,7 +50,7 @@ public class PlayerMovemnt : MonoBehaviour {
 				if (Input.GetKey ("space")) {
 					canjump = false;
 					jumpcount += 1;
-					jumptime = Time.time;
+					jumptime = Time.time;s
 				}
 			} else {
 				vel.y = (float)(-jumpscale * jumpdur / 2 * (Time.time - jumptime) + jumpscale * jumpdur * jumpdur / 4);
