@@ -1,104 +1,82 @@
-﻿using System.Collections;
+﻿using UnityEngine;
 using System.Collections.Generic;
-using UnityEngine;
 
-// Attatch to push part of button.
-public class ButtonBehavior : MonoBehaviour {
-    /*// How quickly the button moves up and down.
-    public float pressSpeed = 1f;
-    // Is the button fully pressed?
-    public bool isPressed;
-    // Anchor transforms for pressed and unpressed positions.
-    public Transform pressedAnchor, unpressedAnchor, pushPart;
-
-    // 0 = fully unpressed, 1 = fully pressed.
-    private float pressedAmount = 0;
+// Class for controlling a button object.
+public class ButtonBehavior : MonoBehaviour
+{
+    // List of objects currently touching the button.
     private List<GameObject> pressingObjects;
+    // List of GameObjects that the button controls.
+    public GameObject[] connectedDevices;
+    private bool isActivated = false;
+    // Colors that indicate the button's state.
+    public Color unpressedColor = new Color(0.5f, 0, 0);
+    public Color pressedColor = new Color(1, 0, 0);
+    // Renderer on the button's knob, needed to change the color.
+    public SpriteRenderer buttonKnobRenderer;
 
-	// Use this for initialization
-	void Start () {
+    // On script instantiation...
+    private void Awake()
+    {
+        // Initialize variables.
         pressingObjects = new List<GameObject>();
-	}
-	
-	// Update is called once per frame
-	void Update () {
-		if(pressedAmount < 1)
-        {
-            if (pressingObjects.Count > 0)
-            {
-                pressedAmount += Time.deltaTime * pressSpeed;
-                Mathf.Clamp01(pressedAmount);
-                isPressed = pressedAmount == 1;
-            }
-        }
-	}
-
-    private void OnCollisionEnter(Collision collision)
-    {
-        if (CheckCanPress(collision.gameObject))
-        {
-            pressingObjects.Add(gameObject);
-        }
     }
 
-    private void OnCollisionExit(Collision collision)
+    // Before 1st frame...
+    private void Start()
     {
-        pressingObjects.Remove(collision.gameObject);
+        // Perform initial logic state update.
+        UpdateLogicState(CheckIsPressed());
     }
 
-    private void OnCollisionStay(Collision collision)
-    {
-        string collidingObjectTag = collision.gameObject.tag;
-        if (collidingObjectTag == "Box" || collidingObjectTag == "Player")
-        {
-            if (pressedAmount < 1)
-            {
-                pressedAmount = Mathf.Clamp01(pressedAmount + Time.deltaTime * pressSpeed);
-                pushPart.transform.position = Vector2.Lerp(unpressedAnchor.position, pressedAnchor.position, pressedAmount);
-                isPressed = pressedAmount == 1;
-            }
-        }
-        else if (pressedAmount > 0)
-        {
-            pressedAmount = Mathf.Clamp01(pressedAmount - Time.deltaTime * pressSpeed);
-            pushPart.transform.position = Vector2.Lerp(unpressedAnchor.position, pressedAnchor.position, pressedAmount);
-            isPressed = false;
-        }
-    }
-
-    private bool CheckCanPress(GameObject obj)
-    {
-        bool canPress = obj.tag == "Player";
-        canPress =  canPress || obj.tag == "Box";
-        return canPress;
-    }*/
-    public bool isPressed;
-    public float pressSpeed;
-    public Transform pressPart, unpressedAnchor, pressedAnchor;
-    private List<GameObject> pressingObjects;
-    private float pressedAmount = 0;
-
+    // Every frame...
     private void Update()
     {
-        // If there are objects on the button and it is not fully pressed
-        // move the button down
-        // Else if there are not objects on the button and it not fully unpressed
-        // move the button up
+        // Check if the button's pressed state has changed, and update the
+        // logic state if it has.
+        bool pressState = CheckIsPressed();
+        if (pressState != isActivated)
+        {
+            UpdateLogicState(pressState);
+        }
+    }
 
-        bool pressUpdated = false;
-        if(pressingObjects.Count > 0 && pressedAmount < 1)
+    // Update things controlled by the button's logic state.
+    private void UpdateLogicState(bool pressState)
+    {
+        isActivated = pressState ;
+        // Set button color.
+        if (isActivated)
+            buttonKnobRenderer.color = pressedColor;
+        else
+            buttonKnobRenderer.color = unpressedColor;
+        // Set logic state of connected devices.
+        for(int i = 0; i < connectedDevices.Length; i++)
         {
-            pressedAmount += Time.deltaTime * pressSpeed;
+            connectedDevices[i].SendMessage("SetLogicState", isActivated);
         }
-        else if(pressingObjects.Count == 0 && pressedAmount > 0)
-        {
-            pressedAmount -= Time.deltaTime * pressSpeed;
-        }
-        if (pressUpdated)
-        {
-            Mathf.Clamp01(pressedAmount);
-            pressPart.position = Vector2.Lerp(unpressedAnchor.position, pressedAnchor.position, pressedAmount);
-            isPressed = pressedAmount == 1;
-        }
+    }
+
+    // Checks the button's press state.
+    // This will probably become more complex as more features are added.
+    private bool CheckIsPressed()
+    {
+        return pressingObjects.Count > 0;
+    }
+
+    // Add a new pressing object to the list.
+    // Called by ButtonPressDetector when a GameObject starts touching
+    // the button knob.
+    public void AddPressingObject(GameObject obj)
+    {
+        pressingObjects.Add(obj);
+    }
+
+    // Remove a pressing object from the list.
+    // Called by ButtonPressDetector when a GameObject stops touching
+    // the button knob.
+    public void RemovePressingObject(GameObject obj)
+    {
+        pressingObjects.Remove(obj);
     }
 }
