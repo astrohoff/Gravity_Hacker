@@ -4,10 +4,8 @@
 TagManager:
   serializedVersion: 2
   tags:
-  - ground
   - wall
-  - Ground
-  - Box
+  - ground
   layers:
   - Default
   - TransparentFX
