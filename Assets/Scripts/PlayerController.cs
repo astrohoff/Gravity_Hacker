@@ -12,6 +12,10 @@ public class PlayerController : MonoBehaviour {
 	Vector3 right, left, temp;
 	Vector2 upjump, downjump, rightjump,leftjump, jump;
 
+	//fireball data
+	public GameObject fireball;
+	public Transform firePoint;
+
 
 	void Start () {
 		player = GetComponent<Rigidbody2D> ();
@@ -152,6 +156,12 @@ public class PlayerController : MonoBehaviour {
 			//player.velocity = vel;
 
 			Physics2D.gravity = 10*Vector2.right;
+		}
+
+
+		if (Input.GetKeyDown ("f")) {			
+				Instantiate (fireball, firePoint.position, firePoint.rotation);
+
 		}
 
 
