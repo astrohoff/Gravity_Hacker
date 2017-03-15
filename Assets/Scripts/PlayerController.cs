@@ -5,11 +5,12 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour {
 
 	Rigidbody2D player;
-	bool canjump, paused, jumped;
+	bool canjump, paused;
 	Vector2 vel;
 	int orientation; // 1 = down, 2 = up, 3 = left, 4 = right
-	public float speed, jumpscale, jumpdur, jumptime;
+	public float speed, jumptime, jumpstr;
 	Vector3 right, left, temp;
+	Vector2 upjump, downjump, rightjump,leftjump, jump;
 
 
 	void Start () {
@@ -17,12 +18,17 @@ public class PlayerController : MonoBehaviour {
 		canjump = true;
 		paused = false;
 		vel = new Vector2 (0, 0);
-		speed = 13f;
+		speed = 8f;
 		orientation = 1;
 
-		jumpscale = 60f;
-		jumpdur = 1f;
+
 		jumptime = 0f;
+		jumpstr = 7;
+		upjump = new Vector2 (0, jumpstr);
+		downjump = new Vector2 (0, -jumpstr);
+		leftjump = new Vector2 (-jumpstr, 0);
+		rightjump = new Vector2 (jumpstr, 0);
+		jump = upjump; //default jump direction
 
 		right = gameObject.transform.localScale;
 		temp = right;
@@ -37,6 +43,7 @@ public class PlayerController : MonoBehaviour {
 	}
 
 	void Update () {
+		vel = player.velocity;
 		if (Input.GetKey ("d")) {
 			gameObject.transform.localScale = right;
 			if (orientation == 1 || orientation == 2) {
@@ -75,24 +82,35 @@ public class PlayerController : MonoBehaviour {
 
 
 
-		if (Input.GetKey ("space")) {
+		if (Input.GetKeyDown ("space")) {
 			if (canjump) {
 				canjump = false;
 				jumptime = Time.time;
-				jumped = true;
+				if (orientation == 1) {
+					jump = upjump;
+					jump.x = player.velocity.x;
+					player.velocity = jump;
+
+				} 
+				else if (orientation == 2) {
+					jump = downjump;
+					jump.x = player.velocity.x;
+					player.velocity = jump;
+
+				} 
+				else if (orientation == 3) {
+					jump = rightjump;
+					jump.y = player.velocity.y;
+					player.velocity = jump;
+
+				} 
+				else if (orientation == 4) {
+					jump = leftjump;
+					jump.y = player.velocity.y;
+					player.velocity = jump;
+
+				}
 			}
-		}
-		if (!canjump && jumped) {
-			if (orientation == 1) {
-				vel.y = (float)(-jumpscale * jumpdur / 2 * (Time.time - jumptime) + jumpscale * jumpdur * jumpdur / 4);
-			} else if (orientation == 2) {
-				vel.y = (float)((-1) * (-jumpscale * jumpdur / 2 * (Time.time - jumptime) + jumpscale * jumpdur * jumpdur / 4));
-			} else if (orientation == 3) {
-				vel.x = (float)((1) * (-jumpscale * jumpdur / 2 * (Time.time - jumptime) + jumpscale * jumpdur * jumpdur / 4));
-			} else if (orientation == 4) {
-				vel.x = (float)((-1) * (-jumpscale * jumpdur / 2 * (Time.time - jumptime) + jumpscale * jumpdur * jumpdur / 4));
-			}
-			player.velocity = vel;
 		}
 
 		if (Input.GetKeyDown ("up")) {
@@ -101,7 +119,7 @@ public class PlayerController : MonoBehaviour {
 
 			vel.y = 0;
 			vel.x = 0;
-			player.velocity = vel;
+			//player.velocity = vel;
 
 			Physics2D.gravity = 10*Vector2.up;
 		}
@@ -111,7 +129,7 @@ public class PlayerController : MonoBehaviour {
 
 			vel.y = 0;
 			vel.x = 0;
-			player.velocity = vel;
+			//player.velocity = vel;
 
 			Physics2D.gravity = 10*Vector2.down;
 		}
@@ -121,7 +139,7 @@ public class PlayerController : MonoBehaviour {
 
 			vel.y = 0;
 			vel.x = 0;
-			player.velocity = vel;
+			//player.velocity = vel;
 
 			Physics2D.gravity = 10*Vector2.left;
 		}
@@ -131,7 +149,7 @@ public class PlayerController : MonoBehaviour {
 
 			vel.y = 0;
 			vel.x = 0;
-			player.velocity = vel;
+			//player.velocity = vel;
 
 			Physics2D.gravity = 10*Vector2.right;
 		}
