@@ -96,41 +96,18 @@ GameObject:
   m_PrefabParentObject: {fileID: 1265026787313248, guid: 9cb12c67b9b5a2446b749488ed5dd4db,
     type: 2}
   m_PrefabInternal: {fileID: 940613223}
---- !u!114 &31546807
+--- !u!114 &31546807 stripped
 MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 31546806}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
+  m_PrefabParentObject: {fileID: 114531998358427824, guid: 9cb12c67b9b5a2446b749488ed5dd4db,
+    type: 2}
+  m_PrefabInternal: {fileID: 940613223}
   m_Script: {fileID: 11500000, guid: a755db86aa38bf647b0973d11ea9052a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  logicSources:
-  - {fileID: 730555362}
-  logicDesinations: []
-  negateLogicSources: 01
---- !u!1 &730555361 stripped
-GameObject:
-  m_PrefabParentObject: {fileID: 1319625533847640, guid: 903ab3d12dbf66d428d9d69595bbc172,
+--- !u!114 &730555362 stripped
+MonoBehaviour:
+  m_PrefabParentObject: {fileID: 114943112238188680, guid: 903ab3d12dbf66d428d9d69595bbc172,
     type: 2}
   m_PrefabInternal: {fileID: 1471449083}
---- !u!114 &730555362
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 730555361}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a755db86aa38bf647b0973d11ea9052a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  logicSources: []
-  logicDesinations:
-  - {fileID: 31546807}
-  negateLogicSources: 
 --- !u!1001 &940613223
 Prefab:
   m_ObjectHideFlags: 0
@@ -170,6 +147,11 @@ Prefab:
       propertyPath: m_RootOrder
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 114531998358427824, guid: 9cb12c67b9b5a2446b749488ed5dd4db,
+        type: 2}
+      propertyPath: logicSources.Array.data[0]
+      value: 
+      objectReference: {fileID: 730555362}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 9cb12c67b9b5a2446b749488ed5dd4db, type: 2}
   m_IsPrefabParent: 0
@@ -392,6 +374,11 @@ Prefab:
       propertyPath: connectedDevices.Array.data[0]
       value: 
       objectReference: {fileID: 31546806}
+    - target: {fileID: 114943112238188680, guid: 903ab3d12dbf66d428d9d69595bbc172,
+        type: 2}
+      propertyPath: logicDesinations.Array.data[0]
+      value: 
+      objectReference: {fileID: 31546807}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 903ab3d12dbf66d428d9d69595bbc172, type: 2}
   m_IsPrefabParent: 0
