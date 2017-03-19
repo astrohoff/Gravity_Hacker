@@ -103,6 +103,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 506ffe96912bb4941a10be7fee6ce970, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  health: 2
+  invincibilityTime: 1
+  isInvicible: 0
 --- !u!212 &212501973487724986
 SpriteRenderer:
   m_ObjectHideFlags: 1
@@ -116,7 +119,7 @@ SpriteRenderer:
   m_LightProbeUsage: 0
   m_ReflectionProbeUsage: 0
   m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 5f39aabca5706834483c319441f22448, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
