@@ -4,29 +4,32 @@ using System.Collections.Generic;
 // Class for controlling a button object.
 public class ButtonBehavior : MonoBehaviour
 {
-    // List of objects currently touching the button.
-    private List<GameObject> pressingObjects;
     // List of GameObjects that the button controls.
     public GameObject[] connectedDevices;
-    private bool isActivated = false;
     // Colors that indicate the button's state.
     public Color unpressedColor = new Color(0.5f, 0, 0);
     public Color pressedColor = new Color(1, 0, 0);
     // Renderer on the button's knob, needed to change the color.
     public SpriteRenderer buttonKnobRenderer;
 
+    // List of objects currently touching the button.
+    private List<GameObject> pressingObjects;
+    private LogicManager logicManager;
+
     // On script instantiation...
     private void Awake()
     {
         // Initialize variables.
         pressingObjects = new List<GameObject>();
+        logicManager = GetComponent<LogicManager>();
     }
 
     // Before 1st frame...
     private void Start()
     {
         // Perform initial logic state update.
-        UpdateLogicState(CheckIsPressed());
+        logicManager.SetState(CheckIsPressed());
+        UpdateButtonState();
     }
 
     // Every frame...
@@ -35,26 +38,22 @@ public class ButtonBehavior : MonoBehaviour
         // Check if the button's pressed state has changed, and update the
         // logic state if it has.
         bool pressState = CheckIsPressed();
-        if (pressState != isActivated)
+        if (pressState != logicManager.GetState())
         {
-            UpdateLogicState(pressState);
+            logicManager.SetState(pressState);
+            UpdateButtonState();
         }
     }
 
     // Update things controlled by the button's logic state.
-    private void UpdateLogicState(bool pressState)
+    private void UpdateButtonState()
     {
-        isActivated = pressState ;
+        bool isActive = logicManager.GetState();
         // Set button color.
-        if (isActivated)
+        if (isActive)
             buttonKnobRenderer.color = pressedColor;
         else
             buttonKnobRenderer.color = unpressedColor;
-        // Set logic state of connected devices.
-        for(int i = 0; i < connectedDevices.Length; i++)
-        {
-            connectedDevices[i].SendMessage("SetLogicState", isActivated);
-        }
     }
 
     // Checks the button's press state.

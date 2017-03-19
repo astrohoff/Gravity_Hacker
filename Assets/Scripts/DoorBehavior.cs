@@ -2,28 +2,22 @@
 
 // Class for controlling doors.
 public class DoorBehavior : MonoBehaviour {
-
-    public bool isOpen = false;
     private SpriteRenderer doorRenderer;
     private BoxCollider2D doorCollider;
+    private LogicManager logicManager;
 
     private void Awake()
     {
         doorRenderer = GetComponent<SpriteRenderer>();
         doorCollider = GetComponent<BoxCollider2D>();
+        logicManager = GetComponent<LogicManager>();
 
-    }
-    
-    // Method that allows the doors state to be set by other scripts via a message.
-    public void SetLogicState(bool state)
-    {
-        isOpen = state;
-        UpdateLogicState();
     }
 
     // Update things that depend on the door's state.
-    private void UpdateLogicState()
+    public void UpdateLogicState()
     {
+        bool isOpen = logicManager.GetState();
         doorRenderer.enabled = !isOpen;
         doorCollider.enabled = !isOpen;
     }
