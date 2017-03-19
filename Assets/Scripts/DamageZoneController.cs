@@ -33,7 +33,6 @@ public class DamageZoneController : MonoBehaviour {
     // Returns direction in world space.
     private Vector2 GetPushBackDirection(Collision2D collision)
     {
-        Debug.Log("Collision points: " + string.Join(", ", Array.ConvertAll(collision.contacts, x => transform.InverseTransformPoint(x.point).ToString())));
         // Get average collision position.
         Vector2 averagePoint = Vector2.zero;
         for(int i = 0; i < collision.contacts.Length; i++)
@@ -43,13 +42,11 @@ public class DamageZoneController : MonoBehaviour {
         averagePoint /= collision.contacts.Length;
         // Convert position from world space to local (damage zone) space.
         averagePoint = transform.InverseTransformPoint(averagePoint);
-        Debug.Log("Average contact: " + averagePoint);
 
         // Check for the different possible collision positions and return corresponding directions.
         Vector2 colliderMax = transform.InverseTransformPoint(damageZoneCollider.bounds.max);
         Vector2 colliderMin = transform.InverseTransformPoint(damageZoneCollider.bounds.min);
         Vector2 padding = damageZoneCollider.bounds.extents * pushbackZonePadding;
-        Debug.Log("Collider bounds: min: " + colliderMin + ", max: " + colliderMax);
         Vector2 pushBackDirection;
         // Between zone sides.
         if (averagePoint.x < colliderMax.x  - padding.x && averagePoint.x > colliderMin.x + padding.x) {
@@ -78,11 +75,7 @@ public class DamageZoneController : MonoBehaviour {
                 pushBackDirection = Vector2.left;
             }
         }
-        // To do: corners, inbetween areas.
-
-        // Convert to world space.
-        //pushBackDirection = transform.TransformDirection(pushBackDirection);
-        Debug.Log("Pushback direction: " + pushBackDirection);
+        // To do: corners.
         return pushBackDirection;
     }
 }
