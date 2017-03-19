@@ -110,6 +110,7 @@ MonoBehaviour:
   logicSources:
   - {fileID: 730555362}
   logicDesinations: []
+  negateLogicSources: 01
 --- !u!1 &730555361 stripped
 GameObject:
   m_PrefabParentObject: {fileID: 1319625533847640, guid: 903ab3d12dbf66d428d9d69595bbc172,
@@ -129,6 +130,7 @@ MonoBehaviour:
   logicSources: []
   logicDesinations:
   - {fileID: 31546807}
+  negateLogicSources: 
 --- !u!1001 &940613223
 Prefab:
   m_ObjectHideFlags: 0

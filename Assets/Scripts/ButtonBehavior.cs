@@ -28,6 +28,7 @@ public class ButtonBehavior : MonoBehaviour
     private void Start()
     {
         // Perform initial logic state update.
+        logicManager.SetState(CheckIsPressed());
         UpdateButtonState();
     }
 
