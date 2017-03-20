@@ -19,13 +19,31 @@ public class KeyDetector : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		if(logicManager.GetState() && (player.transform.position - transform.position).magnitude < senseDistance)
+        // Check for a key if detector hasn't found anything yet.
+        if (!logicManager.GetState())
         {
-            if (checkKeyId)
+            // Check if player is close enough.
+            if ((player.transform.position - transform.position).magnitude < senseDistance)
             {
-                if (keyManager.CheckHasKey(requiredKeyId))
+                // If checking for a specific key...
+                if (checkKeyId)
                 {
-                    keyManager.RemoveKey(requiredKeyId);
+                    // Do activation stuff if the key is found.
+                    if (keyManager.CheckHasKey(requiredKeyId))
+                    {
+                        keyManager.RemoveKey(requiredKeyId);
+                        logicManager.SetState(true);
+                    }
+                }
+                // If any key will do...
+                else
+                {
+                    // Do activation stuff if a key is found.
+                    if (keyManager.CheckHasKey())
+                    {
+                        keyManager.RemoveKey();
+                        logicManager.SetState(true);
+                    }
                 }
             }
         }

@@ -3,11 +3,24 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class KeyManager : MonoBehaviour {
-    private List<int> keys;
+    public List<int> keys;
+
+    private void Awake()
+    {
+        keys = new List<int>();
+    }
 
 	public void AddKey(int keyId)
     {
         keys.Add(keyId);
+    }
+
+    public void RemoveKey()
+    {
+        if(keys.Count > 0)
+        {
+            keys.Remove(keys[0]);
+        }
     }
 
     public void RemoveKey(int keyId)
