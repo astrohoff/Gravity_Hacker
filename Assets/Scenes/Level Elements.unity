@@ -220,7 +220,8 @@ Prefab:
       propertyPath: m_RootOrder
       value: 2
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 114531998358427824, guid: 9cb12c67b9b5a2446b749488ed5dd4db, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: 9cb12c67b9b5a2446b749488ed5dd4db, type: 2}
   m_IsPrefabParent: 0
 --- !u!1001 &1151748838
@@ -453,7 +454,8 @@ Prefab:
       propertyPath: connectedDevices.Array.data[0]
       value: 
       objectReference: {fileID: 31546806}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 114943112238188680, guid: 903ab3d12dbf66d428d9d69595bbc172, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: 903ab3d12dbf66d428d9d69595bbc172, type: 2}
   m_IsPrefabParent: 0
 --- !u!1001 &1493040464

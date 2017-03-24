@@ -11,6 +11,10 @@ public class PlayerController : MonoBehaviour {
 	public float speed, jumptime, jumpstr;
 	Vector3 right, left, temp;
 	Vector2 upjump, downjump, rightjump,leftjump, jump;
+	Vector3 downgrav,upgrav,leftgrav,rightgrav;
+	//fireball data
+	public GameObject fireball;
+	public Transform firePoint;
 
 
 	void Start () {
@@ -35,6 +39,15 @@ public class PlayerController : MonoBehaviour {
 		temp.x = -temp.x;
 		left = temp;
 
+		downgrav = new Vector3 (0, 0, 0);
+		upgrav = downgrav;
+		upgrav.z = 180;
+
+		rightgrav = downgrav;
+		leftgrav = downgrav;
+
+		rightgrav.z = 90;
+		leftgrav.z = -90;
 	}
 
 	// Update is called once per frame
@@ -80,7 +93,15 @@ public class PlayerController : MonoBehaviour {
 			player.velocity = vel;
 		}
 
-
+		if (orientation == 1) {
+			gameObject.transform.rotation = Quaternion.Euler(downgrav);
+		} else if (orientation == 2) {
+			gameObject.transform.rotation = Quaternion.Euler(upgrav);
+		} else if (orientation == 3) {
+			gameObject.transform.rotation = Quaternion.Euler(leftgrav);
+		} else if (orientation == 4) {
+			gameObject.transform.rotation = Quaternion.Euler(rightgrav);
+		}
 
 		if (Input.GetKeyDown ("space")) {
 			if (canjump) {
@@ -117,9 +138,9 @@ public class PlayerController : MonoBehaviour {
 			orientation = 2;
 			canjump = false;
 
-			vel.y = 0;
+			vel.y = 0; //play with dampening
 			vel.x = 0;
-			//player.velocity = vel;
+			player.velocity = vel;
 
 			Physics2D.gravity = 10*Vector2.up;
 		}
@@ -129,7 +150,7 @@ public class PlayerController : MonoBehaviour {
 
 			vel.y = 0;
 			vel.x = 0;
-			//player.velocity = vel;
+			player.velocity = vel;
 
 			Physics2D.gravity = 10*Vector2.down;
 		}
@@ -139,7 +160,7 @@ public class PlayerController : MonoBehaviour {
 
 			vel.y = 0;
 			vel.x = 0;
-			//player.velocity = vel;
+			player.velocity = vel;
 
 			Physics2D.gravity = 10*Vector2.left;
 		}
@@ -149,9 +170,15 @@ public class PlayerController : MonoBehaviour {
 
 			vel.y = 0;
 			vel.x = 0;
-			//player.velocity = vel;
+			player.velocity = vel;
 
 			Physics2D.gravity = 10*Vector2.right;
+		}
+
+
+		if (Input.GetKeyDown ("f")) {			
+				Instantiate (fireball, firePoint.position, firePoint.rotation);
+
 		}
 
 
