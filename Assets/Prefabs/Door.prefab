@@ -80,7 +80,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   state: 0
-  logicSources: []
+  logicSources:
+  - {fileID: 0}
   logicDesinations: []
   negateLogicSources: 
 --- !u!212 &212403128910581592

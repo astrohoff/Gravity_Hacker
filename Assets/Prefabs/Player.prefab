@@ -118,7 +118,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 506ffe96912bb4941a10be7fee6ce970, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 10
+  health: 50
   invincibilityTime: 2
   isInvicible: 0
   damageColor: {r: 0.3764706, g: 0.1882353, b: 0.1882353, a: 1}
