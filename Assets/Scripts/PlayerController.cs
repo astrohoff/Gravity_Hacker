@@ -130,7 +130,7 @@ public class PlayerController : MonoBehaviour {
 					}
 				}
 			} else {
-				if (Time.time - disableTime > 2) {
+				if (Time.time - disableTime > .8) {
 					disabled = false;
 				}
 			}

@@ -4,7 +4,7 @@ using UnityEngine;
 
 // Manage logic of gameobjects.
 public class LogicManager : MonoBehaviour {
-    private bool state;
+    public bool state;
     // Things that control this object's state.
     public LogicManager[] logicSources;
     // Things that this object's state controls.
