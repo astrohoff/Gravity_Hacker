@@ -22,7 +22,7 @@ GameObject:
   - component: {fileID: 114810656788506712}
   - component: {fileID: 114668256262575128}
   - component: {fileID: 58983096687126796}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Key Detector
   m_TagString: Untagged
   m_Icon: {fileID: 0}

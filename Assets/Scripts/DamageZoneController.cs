@@ -18,8 +18,18 @@ public class DamageZoneController : MonoBehaviour {
 
     private void OnCollisionStay2D(Collision2D collision)
     {
+        HandleCollision(collision);
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        HandleCollision(collision);
+    }
+
+    private void HandleCollision(Collision2D collision)
+    {
         HealthManager healthManager = collision.gameObject.GetComponent<HealthManager>();
-        if(healthManager != null)
+        if (healthManager != null)
         {
             if (!healthManager.isInvicible)
             {
