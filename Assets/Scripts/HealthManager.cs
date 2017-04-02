@@ -36,6 +36,14 @@ public class HealthManager : MonoBehaviour {
 
     private void Die()
     {
+        KeyManager keyManager = GetComponent<KeyManager>();
+        if(keyManager != null)
+        {
+            while(keyManager.keys.Count > 0)
+            {
+                keyManager.DropKey();
+            }
+        }
         Destroy(gameObject);
     }
 
