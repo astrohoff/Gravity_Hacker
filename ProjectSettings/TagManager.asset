@@ -5,6 +5,14 @@ TagManager:
   serializedVersion: 2
   tags:
   - fireball
+  - ground
+  - leftwall
+  - rightwall
+  - roof
+  - tlcurve
+  - trcurve
+  - brcurve
+  - blcurve
   layers:
   - Default
   - TransparentFX
