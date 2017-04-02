@@ -15,7 +15,7 @@ public class BossController : MonoBehaviour {
 		up = new Vector2 (0, 1);
 		down = new Vector2 (0, -1);
 
-		direction = left;
+		//direction = left;
 
 		boss = GetComponent<Rigidbody2D> ();
 		speed = 8;

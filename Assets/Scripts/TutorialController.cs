@@ -14,7 +14,7 @@ public class TutorialController : MonoBehaviour {
 		starttime = Time.time;
 		readtime = 5;
 		latency = 5;
-		player.GetComponent<PlayerController> ().paused = true;
+		player.GetComponent<PlayerController> ().paused = false;
 		step = 9;
 	}
 

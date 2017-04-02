@@ -27,7 +27,7 @@ public class PlayerController : MonoBehaviour {
 		disabled = false;
 
 		jumptime = 0f;
-		jumpstr = 7;
+		jumpstr = 8;
 		upjump = new Vector2 (0, jumpstr);
 		downjump = new Vector2 (0, -jumpstr);
 		leftjump = new Vector2 (-jumpstr, 0);
@@ -150,8 +150,8 @@ public class PlayerController : MonoBehaviour {
 				orientation = 2;
 				canjump = false;
 
-				vel.y = 0; //play with dampening
-				vel.x = 0;
+				vel.y = vel.y*.1f; //play with dampening
+				vel.x = vel.x*.1f;
 				player.velocity = vel;
 
 				Physics2D.gravity = 10 * Vector2.up;
@@ -160,8 +160,8 @@ public class PlayerController : MonoBehaviour {
 				orientation = 1;
 				canjump = false;
 
-				vel.y = 0;
-				vel.x = 0;
+				vel.y = vel.y*.1f; //play with dampening
+				vel.x = vel.x*.1f;
 				player.velocity = vel;
 
 				Physics2D.gravity = 10 * Vector2.down;
@@ -170,8 +170,8 @@ public class PlayerController : MonoBehaviour {
 				orientation = 3;
 				canjump = false;
 
-				vel.y = 0;
-				vel.x = 0;
+				vel.y = vel.y*.1f; //play with dampening
+				vel.x = vel.x*.1f;
 				player.velocity = vel;
 
 				Physics2D.gravity = 10 * Vector2.left;
@@ -180,8 +180,8 @@ public class PlayerController : MonoBehaviour {
 				orientation = 4;
 				canjump = false;
 
-				vel.y = 0;
-				vel.x = 0;
+				vel.y = vel.y*.1f; //play with dampening
+				vel.x = vel.x*.1f;
 				player.velocity = vel;
 
 				Physics2D.gravity = 10 * Vector2.right;
