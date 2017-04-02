@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 879aa9353480519459386c35084a9ec1
-timeCreated: 1491161497
+guid: 70b8baea94064364c9455a97d905729d
+timeCreated: 1491161672
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
-    21300000: key_0
+    21300000: alien_0
   serializedVersion: 4
   mipmaps:
     mipMapMode: 0
@@ -79,13 +79,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: key_0
+      name: alien_0
       rect:
         serializedVersion: 2
-        x: 23
-        y: 38
-        width: 83
-        height: 52
+        x: 11
+        y: 0
+        width: 105
+        height: 134
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
