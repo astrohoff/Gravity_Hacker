@@ -34,7 +34,11 @@ public class DamageZoneController : MonoBehaviour {
             if (!healthManager.isInvicible)
             {
                 healthManager.TakeDamage(damageAmount);
-				collision.gameObject.GetComponent<PlayerController> ().disable ();
+                PlayerController playerCtrl = collision.gameObject.GetComponent<PlayerController>();
+                if(playerCtrl != null)
+                {
+                    playerCtrl.disable();
+                }
                 Vector2 pushBackForce = GetPushBackDirection(collision) * pushbackAmount;
                 collision.rigidbody.AddForce(pushBackForce);
             }
