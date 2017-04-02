@@ -23,7 +23,7 @@ GameObject:
   - component: {fileID: 114602569013861208}
   - component: {fileID: 61519725066512652}
   m_Layer: 0
-  m_Name: Damage Zone
+  m_Name: Spikes
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

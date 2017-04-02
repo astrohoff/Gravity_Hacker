@@ -3,8 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class LazerController : MonoBehaviour {
-    public Transform lazerBeamOrigin;
     public Transform lazerBeam;
+    public LayerMask raycastedLayers;
     private BoxCollider2D lazerCollider;
     private BoxCollider2D emitterCollider;
 
@@ -23,7 +23,7 @@ public class LazerController : MonoBehaviour {
 	void Update () {
         lazerCollider.enabled = false;
         emitterCollider.enabled = false;
-        RaycastHit2D hitInfo = Physics2D.Raycast(transform.position, transform.right);
+        RaycastHit2D hitInfo = Physics2D.Raycast(transform.position, transform.right, float.MaxValue, raycastedLayers);
         if(hitInfo.collider != null)
         {
             lazerBeam.position = ((Vector2)transform.position + hitInfo.point) / 2;
