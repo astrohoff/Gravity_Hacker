@@ -116,7 +116,7 @@ Prefab:
     m_Modifications:
     - target: {fileID: 4685040787653150, guid: 68827cadc40dc2d4ba7759de0bcc8855, type: 2}
       propertyPath: m_LocalPosition.x
-      value: -8.46
+      value: -8.39
       objectReference: {fileID: 0}
     - target: {fileID: 4685040787653150, guid: 68827cadc40dc2d4ba7759de0bcc8855, type: 2}
       propertyPath: m_LocalPosition.y
@@ -149,6 +149,10 @@ Prefab:
     - target: {fileID: 1597761771817600, guid: 68827cadc40dc2d4ba7759de0bcc8855, type: 2}
       propertyPath: m_Name
       value: Lazer Emitter
+      objectReference: {fileID: 0}
+    - target: {fileID: 4685040787653150, guid: 68827cadc40dc2d4ba7759de0bcc8855, type: 2}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 68827cadc40dc2d4ba7759de0bcc8855, type: 2}

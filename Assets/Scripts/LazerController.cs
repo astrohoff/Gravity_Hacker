@@ -27,8 +27,8 @@ public class LazerController : MonoBehaviour {
         if(hitInfo.collider != null)
         {
             lazerBeam.position = ((Vector2)transform.position + hitInfo.point) / 2;
-            Vector2 lazerLength = transform.InverseTransformVector(new Vector2(hitInfo.distance, 0));
-            lazerBeam.localScale = new Vector2(lazerLength.x, lazerBeam.localScale.y);
+            float lazerLength = hitInfo.distance / transform.localScale.x;//transform.InverseTransformVector(new Vector2(hitInfo.distance, 0));
+            lazerBeam.localScale = new Vector2(lazerLength, lazerBeam.localScale.y);
         }
         lazerCollider.enabled = true;
         emitterCollider.enabled = true;
