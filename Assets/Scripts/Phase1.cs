@@ -2,12 +2,12 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BossController : MonoBehaviour {
+public class Phase1 : MonoBehaviour {
 
 	Vector2 direction,left,up,right,down,temp; //preset directions
 	Rigidbody2D boss;
 	public float speed, tempx;
-	public Transform middle;
+	public Transform trfoci,tlfoci,blfoci,brfoci;
 	// Use this for initialization
 	void Start () {
 		right = new Vector2 (1, 0);
@@ -36,8 +36,8 @@ public class BossController : MonoBehaviour {
 		} else if (coll.gameObject.CompareTag ("rightwall")) {
 			direction = down;
 		} else if (coll.gameObject.CompareTag ("trcurve")) {
-			temp.x = middle.position.x - boss.position.x;
-			temp.y = middle.position.y - boss.position.y;
+			temp.x = trfoci.position.x - boss.position.x;
+			temp.y = trfoci.position.y - boss.position.y;
 			temp = temp / temp.magnitude;
 			tempx = temp.x;
 			temp.x = -temp.y;
@@ -45,10 +45,32 @@ public class BossController : MonoBehaviour {
 			direction = temp;
 			Debug.Log (direction);
 		} else if (coll.gameObject.CompareTag ("tlcurve")) {
+			temp.x = tlfoci.position.x - boss.position.x;
+			temp.y = tlfoci.position.y - boss.position.y;
+			temp = temp / temp.magnitude;
+			tempx = temp.x;
+			temp.x = -temp.y;
+			temp.y = tempx;
+			direction = temp;
 
 		} else if (coll.gameObject.CompareTag ("blcurve")) {
+			temp.x = blfoci.position.x - boss.position.x;
+			temp.y = blfoci.position.y - boss.position.y;
+			temp = temp / temp.magnitude;
+			tempx = temp.x;
+			temp.x = -temp.y;
+			temp.y = tempx;
+			direction = temp;
+
 
 		} else if (coll.gameObject.CompareTag ("brcurve")) {
+			temp.x = brfoci.position.x - boss.position.x;
+			temp.y = brfoci.position.y - boss.position.y;
+			temp = temp / temp.magnitude;
+			tempx = temp.x;
+			temp.x = -temp.y;
+			temp.y = tempx;
+			direction = temp;
 
 		}
 	}

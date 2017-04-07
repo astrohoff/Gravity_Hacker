@@ -67,9 +67,13 @@ public class PlayerController : MonoBehaviour {
 				vel = player.velocity;
 				if (Input.GetKey ("d")) {
 					gameObject.transform.localScale = right;
-					if (orientation == 1 || orientation == 2) {
+					if (orientation == 1){ 
 						vel.x = speed;
 					} 
+					if (orientation == 2) {
+						gameObject.transform.localScale = left;
+						vel.x = speed;
+					}
 					if (orientation == 3) {
 						vel.y = -speed;
 					}
@@ -80,9 +84,13 @@ public class PlayerController : MonoBehaviour {
 
 				} else if (Input.GetKey ("a")) {
 					gameObject.transform.localScale = left;
-					if (orientation == 1 || orientation == 2) {
+					if (orientation == 1){ 
 						vel.x = -speed;
-					} 
+					}
+					if (orientation == 2) {
+						gameObject.transform.localScale = right;
+						vel.x = -speed;
+					}
 					if (orientation == 3) {
 						vel.y = speed;
 					}
