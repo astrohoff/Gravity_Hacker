@@ -131,6 +131,7 @@ MonoBehaviour:
   damageAmount: 1
   pushbackAmount: 200
   pushbackZonePadding: 0.1
+  playerDisableDurration: 0.4
 --- !u!212 &212411775885042508
 SpriteRenderer:
   m_ObjectHideFlags: 1

@@ -8,6 +8,7 @@ public class DamageZoneController : MonoBehaviour {
     public float pushbackAmount = 1f;
     // The size of the area
     public float pushbackZonePadding = 0.1f;
+	public float playerDisableDurration = 0.3f;
 
     private BoxCollider2D damageZoneCollider;
 
@@ -37,7 +38,7 @@ public class DamageZoneController : MonoBehaviour {
                 PlayerController playerCtrl = collision.gameObject.GetComponent<PlayerController>();
                 if(playerCtrl != null)
                 {
-                    playerCtrl.disable();
+					playerCtrl.disable(playerDisableDurration);
                 }
                 Vector2 pushBackForce = GetPushBackDirection(collision) * pushbackAmount;
                 collision.rigidbody.AddForce(pushBackForce);

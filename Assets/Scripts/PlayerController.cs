@@ -6,6 +6,7 @@ public class PlayerController : MonoBehaviour {
 
 	Rigidbody2D player;
 	public bool canjump, paused, disabled;
+	private float disableTimeLength = 0.8f;
 	Vector2 vel;
 	int orientation; // 1 = down, 2 = up, 3 = left, 4 = right
 	public float speed, jumptime, jumpstr, disableTime;
@@ -130,7 +131,7 @@ public class PlayerController : MonoBehaviour {
 					}
 				}
 			} else {
-				if (Time.time - disableTime > .8) {
+				if (Time.time - disableTime > disableTimeLength) {
 					disabled = false;
 				}
 			}
@@ -211,7 +212,8 @@ public class PlayerController : MonoBehaviour {
 		paused = true;
 	}
 
-	public void disable(){
+	public void disable(float length){
+		disableTimeLength = length;
 		disabled = true;
 		disableTime = Time.time;
 
