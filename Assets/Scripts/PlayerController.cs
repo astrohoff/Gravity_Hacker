@@ -16,7 +16,7 @@ public class PlayerController : MonoBehaviour {
 	//fireball data
 	public GameObject fireball;
 	public Transform firePoint;
-
+	public GunBehavior gun;
 
 	void Start () {
 		player = GetComponent<Rigidbody2D> ();
@@ -194,6 +194,9 @@ public class PlayerController : MonoBehaviour {
 
 			}
 
+			if (Input.GetButtonDown ("Fire1") && gun != null) {
+				gun.Fire ();
+			}
 
 		}
 	}

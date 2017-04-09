@@ -7,9 +7,9 @@ public class KeyBehavior : MonoBehaviour {
     
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if(collision.gameObject.tag == "Player")
+		KeyManager keyManager = collision.gameObject.GetComponent<KeyManager>();
+		if(keyManager != null)
         {
-            KeyManager keyManager = collision.gameObject.GetComponent<KeyManager>();
             keyManager.AddKey(keyId);
             Destroy(gameObject);
         }

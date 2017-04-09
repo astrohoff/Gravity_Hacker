@@ -10,6 +10,7 @@ public class EnemyController : MonoBehaviour {
 	public Vector2 wanderTimeMinMax = new Vector2(0.5f, 2.0f);
 	// Movement speed for wandering.
     public float wanderSpeed = 1.5f;
+
 	// The speed that the enemies rotate (in degrees / second) at to match gravity orientation.
 	public float rotateSpeed = 360.0f;
 	// That angel of difference in orientation between enemy and gravity above which
@@ -21,15 +22,14 @@ public class EnemyController : MonoBehaviour {
     private float currentStateTime = 0;
 	// Specifies whether the enemy's forward direction is positive or negative.
     private int forward = 1;
+	private Rigidbody2D enemyRigidbody;
 
     public enum EnemyState { Wander, Engage};
 
-    // Use this for initialization
-    private void Start () {
-		
+	private void Awake(){
+		enemyRigidbody = GetComponent<Rigidbody2D> ();
 	}
-
-    // Update is called once per frame
+    
     private void Update () {
 		UpdateOrientation();
         UpdateState();
@@ -43,15 +43,6 @@ public class EnemyController : MonoBehaviour {
 			transform.Rotate (rotAxis, rotAngle);
 		}
     }
-
-	private bool CheckArrowKeyPressed()
-	{
-		bool arrowPress = Input.GetKeyDown(KeyCode.DownArrow);
-		arrowPress = arrowPress || Input.GetKeyDown(KeyCode.LeftArrow);
-		arrowPress = arrowPress || Input.GetKeyDown(KeyCode.UpArrow);
-		arrowPress = arrowPress || Input.GetKeyDown(KeyCode.RightArrow);
-		return arrowPress;
-	}
 
     private void UpdateState()
     {
@@ -71,16 +62,20 @@ public class EnemyController : MonoBehaviour {
 				} 
 				// If the enemy still has more time to wander, move it.
 				else {
-					// Calculate and apply movement to enemy.
-					Vector2 movementDirection = transform.right * forward;
-					float movementDistace = wanderSpeed * Time.deltaTime;
-					transform.position = (Vector2)transform.position + movementDirection * movementDistace;
+					ApplyMovement (wanderSpeed);
 				}
 			}
         }
 		// Increase currentStateTime by the length of this frame.
 		currentStateTime += Time.deltaTime;
     }
+
+	// Calculate and apply movement to enemy.
+	private void ApplyMovement(float speed){
+		Vector2 movementDirection = transform.right * forward;
+		float movementDistace = speed * Time.deltaTime;
+		transform.position = (Vector2)transform.position + movementDirection * movementDistace;
+	}
 
 	// Sets a new wander state with a randomized durration and optionally a
 	// randomized forward direction.
@@ -104,7 +99,6 @@ public class EnemyController : MonoBehaviour {
 				forward = -1;
             }
         }
-        
     }
 
 	private bool CheckCanSeePlayer(){
@@ -113,11 +107,13 @@ public class EnemyController : MonoBehaviour {
 		
 	private void OnCollisionEnter2D(Collision2D collision)
     {
-		// If the enemy runs into wall while wandering, generate a new
-		// wander in the opposite direction.
-		if (state == EnemyState.Wander) {
-			forward = -forward;
-			GenerateNewWander (false);
+		if (collision.gameObject.tag != "Player") {
+			// If the enemy runs into wall while wandering, generate a new
+			// wander in the opposite direction.
+			if (state == EnemyState.Wander) {
+				forward = -forward;
+				GenerateNewWander (false);
+			}
 		}
     }
 }
