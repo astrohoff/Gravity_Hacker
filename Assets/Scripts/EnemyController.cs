@@ -20,14 +20,15 @@ public class EnemyController : MonoBehaviour {
     private float currentMaxStateTime = 0;
 	// The length of time the current state has lasted without being reevaluated / restarted.
     private float currentStateTime = 0;
-	// Specifies whether the enemy's forward direction is positive or negative.
-    private int forward = 1;
 	private Rigidbody2D enemyRigidbody;
+	private Transform player;
+	public LayerMask playerRaycastLayers;
 
     public enum EnemyState { Wander, Engage};
 
 	private void Awake(){
 		enemyRigidbody = GetComponent<Rigidbody2D> ();
+		player = GameObject.Find ("Player");
 	}
     
     private void Update () {
@@ -72,7 +73,7 @@ public class EnemyController : MonoBehaviour {
 
 	// Calculate and apply movement to enemy.
 	private void ApplyMovement(float speed){
-		Vector2 movementDirection = transform.right * forward;
+		Vector2 movementDirection = transform.right * transform.localScale.normalized.x;
 		float movementDistace = speed * Time.deltaTime;
 		transform.position = (Vector2)transform.position + movementDirection * movementDistace;
 	}
@@ -87,22 +88,21 @@ public class EnemyController : MonoBehaviour {
 		currentMaxStateTime = Random.Range(wanderTimeMinMax.x, wanderTimeMinMax.y);
 		// Optionally set a randomized forward direction.
 		// This is optional because when the enemy runs into a wall it generates a new wander but
-		// must specify forward as being away from the wall.
+		// must make forward be away from the wall.
         if (randomizeDirection)
         {
             if (Random.value > 0.5f)
             {
-				forward = 1;
-            }
-            else
-            {
-				forward = -1;
+				Vector3 localScale = transform.localScale;
+				localScale.x = localScale.x * -1;
+				transform.localScale = localScale;
             }
         }
     }
 
 	private bool CheckCanSeePlayer(){
-		return false;
+		Vector2 playerDirection = transform.position - player.position;
+		Physics2D.Raycast (transform.position, playerDirection, float.MaxValue, playerRaycastLayers);
 	}
 		
 	private void OnCollisionEnter2D(Collision2D collision)
@@ -111,7 +111,9 @@ public class EnemyController : MonoBehaviour {
 			// If the enemy runs into wall while wandering, generate a new
 			// wander in the opposite direction.
 			if (state == EnemyState.Wander) {
-				forward = -forward;
+				Vector3 localScale = transform.localScale;
+				localScale.x = localScale.x * -1;
+				transform.localScale = localScale;
 				GenerateNewWander (false);
 			}
 		}

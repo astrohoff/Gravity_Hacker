@@ -1045,31 +1045,6 @@ Prefab:
       propertyPath: m_RootOrder
       value: 9
       objectReference: {fileID: 0}
-    - target: {fileID: 114872856631716792, guid: 86171980edd5d6f40b75420d646ffba7,
-        type: 2}
-      propertyPath: nextSceneName
-      value: Tutorial2
-      objectReference: {fileID: 0}
-    - target: {fileID: 61741919409153568, guid: 86171980edd5d6f40b75420d646ffba7,
-        type: 2}
-      propertyPath: m_Offset.x
-      value: 0.016628265
-      objectReference: {fileID: 0}
-    - target: {fileID: 61741919409153568, guid: 86171980edd5d6f40b75420d646ffba7,
-        type: 2}
-      propertyPath: m_Size.x
-      value: 1.03
-      objectReference: {fileID: 0}
-    - target: {fileID: 61741919409153568, guid: 86171980edd5d6f40b75420d646ffba7,
-        type: 2}
-      propertyPath: m_Offset.y
-      value: -0.033257723
-      objectReference: {fileID: 0}
-    - target: {fileID: 61741919409153568, guid: 86171980edd5d6f40b75420d646ffba7,
-        type: 2}
-      propertyPath: m_Size.y
-      value: 1.79
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 86171980edd5d6f40b75420d646ffba7, type: 2}
   m_IsPrefabParent: 0
