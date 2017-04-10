@@ -84,6 +84,7 @@ MonoBehaviour:
   bulletPrefab: {fileID: 1994419232077156, guid: 00188368647e2df4ca40cf61b6de1b72,
     type: 2}
   bulletSpawn: {fileID: 4214286349847782}
+  bulletSpeed: 50
 --- !u!212 &212458038095053334
 SpriteRenderer:
   m_ObjectHideFlags: 1

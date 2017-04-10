@@ -23,12 +23,15 @@ public class EnemyController : MonoBehaviour {
 	private Rigidbody2D enemyRigidbody;
 	private Transform player;
 	public LayerMask playerRaycastLayers;
+	public GunBehavior gun;
+	public float timeBetweenShots = 0.5f;
+	private float previousShotTime = 0;
 
     public enum EnemyState { Wander, Engage};
 
 	private void Awake(){
 		enemyRigidbody = GetComponent<Rigidbody2D> ();
-		player = GameObject.Find ("Player");
+		player = GameObject.Find ("Player").transform;
 	}
     
     private void Update () {
@@ -48,8 +51,7 @@ public class EnemyController : MonoBehaviour {
     private void UpdateState()
     {
 		// Initial state evaluation path determined by previous state.
-        if (state == EnemyState.Wander)
-        {
+		if (state == EnemyState.Wander) {
 			// If the player is "spotted" switch to engage state.
 			if (CheckCanSeePlayer ()) {
 				state = EnemyState.Engage;
@@ -66,7 +68,16 @@ public class EnemyController : MonoBehaviour {
 					ApplyMovement (wanderSpeed);
 				}
 			}
-        }
+		} else if (state == EnemyState.Engage) {
+			if (!CheckCanSeePlayer ()) {
+				state = EnemyState.Wander;
+			} else {
+				if (Time.realtimeSinceStartup - previousShotTime > timeBetweenShots) {
+					gun.Fire ();
+					previousShotTime = Time.realtimeSinceStartup;
+				}
+			}
+		}
 		// Increase currentStateTime by the length of this frame.
 		currentStateTime += Time.deltaTime;
     }
@@ -75,7 +86,7 @@ public class EnemyController : MonoBehaviour {
 	private void ApplyMovement(float speed){
 		Vector2 movementDirection = transform.right * transform.localScale.normalized.x;
 		float movementDistace = speed * Time.deltaTime;
-		transform.position = (Vector2)transform.position + movementDirection * movementDistace;
+		enemyRigidbody.position += (Vector2)(movementDirection * movementDistace);
 	}
 
 	// Sets a new wander state with a randomized durration and optionally a
@@ -101,8 +112,15 @@ public class EnemyController : MonoBehaviour {
     }
 
 	private bool CheckCanSeePlayer(){
-		Vector2 playerDirection = transform.position - player.position;
-		Physics2D.Raycast (transform.position, playerDirection, float.MaxValue, playerRaycastLayers);
+		Vector2 playerDirection = -(transform.position - player.position);
+		RaycastHit2D hit = Physics2D.Raycast (transform.position, playerDirection, float.MaxValue, playerRaycastLayers);
+		if (hit.collider == null) {
+			return false;
+		}
+		if (hit.collider.tag == "Player") {
+			return Vector2.Angle (transform.right * transform.localScale.normalized.x, playerDirection) < 90;
+		}
+		return false;
 	}
 		
 	private void OnCollisionEnter2D(Collision2D collision)

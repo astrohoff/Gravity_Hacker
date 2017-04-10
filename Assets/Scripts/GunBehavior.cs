@@ -18,5 +18,7 @@ public class GunBehavior : MonoBehaviour {
 		newBullet.transform.localPosition = Vector3.zero;
 		newBullet.transform.localRotation = Quaternion.identity;
 		newBullet.GetComponent<Rigidbody2D> ().velocity = transform.right * bulletSpeed * user.localScale.normalized.x;
+		newBullet.GetComponent<DamageZoneController> ().owner = transform.parent.gameObject;
+		newBullet.transform.parent = null;
 	}
 }
