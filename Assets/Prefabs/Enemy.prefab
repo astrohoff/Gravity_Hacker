@@ -155,6 +155,7 @@ MonoBehaviour:
     type: 2}
   bulletSpawn: {fileID: 4657973676849070}
   bulletSpeed: 50
+  bulletColor: {r: 1, g: 0.5019608, b: 0, a: 1}
 --- !u!114 &114280441891157626
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -183,6 +184,7 @@ MonoBehaviour:
   pushbackAmount: 300
   pushbackZonePadding: 0.1
   playerDisableDurration: 0.3
+  owner: {fileID: 0}
 --- !u!114 &114402942306898830
 MonoBehaviour:
   m_ObjectHideFlags: 1
