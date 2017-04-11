@@ -4,6 +4,7 @@ using UnityEngine;
 
 // Controller for enemy ailen behavior.
 public class EnemyController : MonoBehaviour {
+	public bool enableWalking = true;
     public EnemyState state;
 	// Min & max time enemy wanders in a direction before choosing another random direction.
 	// Combined into Vector2 for convenience.
@@ -86,6 +87,10 @@ public class EnemyController : MonoBehaviour {
 	private void ApplyMovement(float speed){
 		Vector2 movementDirection = transform.right * transform.localScale.normalized.x;
 		float movementDistace = speed * Time.deltaTime;
+		// Disable walking to keep enemy in place.
+		if (!enableWalking) {
+			movementDistace = 0;
+		}
 		enemyRigidbody.position += (Vector2)(movementDirection * movementDistace);
 	}
 

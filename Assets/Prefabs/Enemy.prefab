@@ -196,6 +196,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5d9960ade53597b46966ebc0c7a13266, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  enableWalking: 1
   state: 0
   wanderTimeMinMax: {x: 0.5, y: 2}
   wanderSpeed: 1.5
@@ -203,7 +204,7 @@ MonoBehaviour:
   rotateThresholdAngle: 5
   playerRaycastLayers:
     serializedVersion: 2
-    m_Bits: 4294967291
+    m_Bits: 4294967035
   gun: {fileID: 114033070779837728}
   timeBetweenShots: 0.5
 --- !u!114 &114873321157102364

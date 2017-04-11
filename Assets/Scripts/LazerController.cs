@@ -7,11 +7,13 @@ public class LazerController : MonoBehaviour {
     public LayerMask raycastedLayers;
     private BoxCollider2D lazerCollider;
     private BoxCollider2D emitterCollider;
+	private LogicManager logicManager;
 
     private void Awake()
     {
         emitterCollider = GetComponent<BoxCollider2D>();
         lazerCollider = lazerBeam.GetComponent<BoxCollider2D>();
+		logicManager = GetComponent<LogicManager> ();
     }
 
 	// Use this for initialization
@@ -32,5 +34,9 @@ public class LazerController : MonoBehaviour {
         }
         lazerCollider.enabled = true;
         emitterCollider.enabled = true;
+	}
+	public void UpdateLogicState(){
+		bool isActive = logicManager.GetState ();
+		lazerBeam.gameObject.SetActive (isActive);
 	}
 }

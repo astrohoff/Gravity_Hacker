@@ -13,6 +13,7 @@ TagManager:
   - trcurve
   - brcurve
   - blcurve
+  - Bullet
   layers:
   - Default
   - TransparentFX
