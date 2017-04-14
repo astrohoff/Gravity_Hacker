@@ -167,7 +167,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bebc0441f5f121449b503e28be17bac6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  keys: 00000000
+  keys: 
   keyPrefab: {fileID: 1202616018246348, guid: 351bd5360554d5948a177c5c55a27039, type: 2}
 --- !u!114 &114296484604022450
 MonoBehaviour:
