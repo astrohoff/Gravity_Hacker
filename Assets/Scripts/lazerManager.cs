@@ -10,6 +10,7 @@ public class lazerManager : MonoBehaviour {
 	void Start () {
 		count = true;
 		top = false;
+
 	}
 	
 	// Update is called once per frame
