@@ -1,11 +1,13 @@
 fileFormatVersion: 2
-guid: 8994ecfe11a925d4fb0022ce9a3604eb
-timeCreated: 1491765521
+guid: 4ed257e240de9c7489d52ab4bca132e9
+timeCreated: 1491767698
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
-    21300000: myspy_0
-    21300002: myspy_1
+    21300000: myspy (1)_0
+    21300002: myspy (1)_1
+    21300004: myspy (1)_2
+    21300006: myspy (1)_3
   serializedVersion: 4
   mipmaps:
     mipMapMode: 0
@@ -41,7 +43,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spriteBorder: {x: 0, y: 30, z: 9, w: 0}
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spritePixelsToUnits: 10
   alphaUsage: 1
   alphaIsTransparency: 1
@@ -68,40 +70,58 @@ TextureImporter:
     crunchedCompression: 0
     allowsAlphaSplitting: 0
     overridden: 0
-  - buildTarget: Android
-    maxTextureSize: 2048
-    textureFormat: -1
-    textureCompression: 1
-    compressionQuality: 50
-    crunchedCompression: 0
-    allowsAlphaSplitting: 0
-    overridden: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: myspy_0
+      name: myspy (1)_0
       rect:
         serializedVersion: 2
         x: 6
         y: 36
-        width: 9
+        width: 10
         height: 22
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: myspy_1
+      name: myspy (1)_1
+      rect:
+        serializedVersion: 2
+        x: 38
+        y: 36
+        width: 10
+        height: 22
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: myspy (1)_2
       rect:
         serializedVersion: 2
         x: 6
         y: 4
+        width: 10
+        height: 22
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: myspy (1)_3
+      rect:
+        serializedVersion: 2
+        x: 38
+        y: 4
         width: 17
         height: 22
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0

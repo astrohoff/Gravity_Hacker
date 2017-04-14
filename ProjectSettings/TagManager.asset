@@ -13,6 +13,7 @@ TagManager:
   - trcurve
   - brcurve
   - blcurve
+  - wallObject
   layers:
   - Default
   - TransparentFX

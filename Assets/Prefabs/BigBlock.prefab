@@ -596,7 +596,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4964420130855022}
   m_Layer: 0
-  m_Name: BIGBLOCK
+  m_Name: BigBlock
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
