@@ -3,13 +3,13 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class lazerManager : MonoBehaviour {
-	bool count;
-	int spot;
-	public GameObject lazertrap;
-	public Transform spawnposition;
+	bool count,top;
+	public GameObject lazertrap, lazertrap1;
+	public Transform spawnposition,spawnposition1;
 	// Use this for initialization
 	void Start () {
 		count = true;
+		top = false;
 	}
 	
 	// Update is called once per frame
@@ -20,8 +20,13 @@ public class lazerManager : MonoBehaviour {
 	void OnTriggerEnter2D(Collider2D coll){
 		if(coll.CompareTag("boss")){
 			if (!count) {
-				spot = Random.Range (-3, 13);
-				Instantiate (lazertrap, spawnposition.position, spawnposition.rotation);
+				if (top) {
+					Instantiate (lazertrap, spawnposition.position, spawnposition.rotation);
+					top = false;
+				} else {
+					Instantiate (lazertrap1, spawnposition1.position, spawnposition.rotation);
+					top = true;
+				}
 				count = true;
 			} else {
 				count = false;

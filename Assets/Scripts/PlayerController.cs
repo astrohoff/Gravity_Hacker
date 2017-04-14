@@ -205,8 +205,20 @@ public class PlayerController : MonoBehaviour {
 		}
 	}
 
+	void OnTriggerEnter2D(Collider2D coll){
+		if (coll.gameObject.CompareTag ("lazer")) {
+			disable ();
+		}
+	}
+
 	void OnCollisionEnter2D(Collision2D coll){
-		if (coll.gameObject.CompareTag ("ground")) {
+		if (coll.gameObject.CompareTag ("ground") && orientation == 1) {
+			canjump = true;
+		} else if (coll.gameObject.CompareTag ("roof") && orientation == 2) {
+			canjump = true;
+		} else if (coll.gameObject.CompareTag ("leftwall") && orientation == 3) {
+			canjump = true;
+		} else if (coll.gameObject.CompareTag ("rightwall") && orientation == 4) {
 			canjump = true;
 		}
 	}
@@ -224,4 +236,5 @@ public class PlayerController : MonoBehaviour {
 		disableTime = Time.time;
 
 	}
+		
 }

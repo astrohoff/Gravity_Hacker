@@ -18,12 +18,15 @@ public class Phase1 : MonoBehaviour {
 		//direction = left;
 
 		boss = GetComponent<Rigidbody2D> ();
-		speed = 8;
+		speed = 6.5f;
 	}
 	
 	// Update is called once per frame
 	void Update () {
 		boss.velocity = speed * direction;
+		if (speed < 10) {
+			speed += Time.deltaTime / 13;
+		}
 	}
 
 	void OnCollisionEnter2D(Collision2D coll){

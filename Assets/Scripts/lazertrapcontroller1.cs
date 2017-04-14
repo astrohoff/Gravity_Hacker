@@ -2,19 +2,20 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class lasertrapcontroler : MonoBehaviour {
+public class lazertrapcontroller1 : MonoBehaviour {
 
-	// Use this for initialization
+
 	Vector2 vel, vel1;
 	public float speed, timer;
 	int spot;
 
+	// Use this for initialization
 	void Start () {
-		spot = Random.Range (-3, 14);
-		Vector3 temp = new Vector3 ((float)spot, gameObject.transform.GetChild (0).position.y);
+		spot = Random.Range (-1, 9);
+		Vector3 temp = new Vector3 (gameObject.transform.GetChild (0).position.x, (float)spot);
 		gameObject.transform.GetChild (0).position = temp;
-		speed = 6f;
-		vel = new Vector2 (0, -speed);
+		speed = 6;
+		vel = new Vector2 (speed, 0);
 		vel1 = new Vector2 (0, 0);
 		timer = Time.time;
 	}
@@ -24,7 +25,7 @@ public class lasertrapcontroler : MonoBehaviour {
 		gameObject.GetComponent<Rigidbody2D> ().velocity = vel;
 		//vel1.y = vel.y;
 		//gameObject.transform.GetChild (0).GetComponent<Rigidbody2D> ().velocity = vel1;
-		if (Time.time - timer > 3.1) {
+		if (Time.time - timer > 4.8f) {
 			Destroy (gameObject);
 		}
 		if (Time.time - timer > 2) {

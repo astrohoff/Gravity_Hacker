@@ -14,6 +14,8 @@ TagManager:
   - brcurve
   - blcurve
   - boss
+  - lazer
+  - missile
   layers:
   - Default
   - TransparentFX
