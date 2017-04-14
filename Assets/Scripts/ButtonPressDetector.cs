@@ -11,8 +11,11 @@ public class ButtonPressDetector : MonoBehaviour {
 
 	private void OnCollisionEnter2D(Collision2D c)
     {
-        // Let the ButtonBehavior know a new object is pressing.
-        buttonBehavior.AddPressingObject(c.gameObject);
+		// Don't let bullets press buttons.
+		if (c.gameObject.tag != "Bullet") {			
+			// Let the ButtonBehavior know a new object is pressing.
+			buttonBehavior.AddPressingObject (c.gameObject);
+		}
     }
 
     private void OnCollisionExit2D(Collision2D c)

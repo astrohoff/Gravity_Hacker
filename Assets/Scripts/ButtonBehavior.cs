@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections.Generic;
+using System.Collections;
 
 // Class for controlling a button object.
 public class ButtonBehavior : MonoBehaviour
@@ -11,6 +12,7 @@ public class ButtonBehavior : MonoBehaviour
     public Color pressedColor = new Color(1, 0, 0);
     // Renderer on the button's knob, needed to change the color.
     public SpriteRenderer buttonKnobRenderer;
+	public bool stayActive = false;
 
     // List of objects currently touching the button.
     private List<GameObject> pressingObjects;
@@ -37,7 +39,7 @@ public class ButtonBehavior : MonoBehaviour
     {
         // Check if the button's pressed state has changed, and update the
         // logic state if it has.
-        bool pressState = CheckIsPressed();
+		bool pressState = CheckIsPressed() || (stayActive && logicManager.state);
         if (pressState != logicManager.GetState())
         {
             logicManager.SetState(pressState);

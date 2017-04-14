@@ -8,6 +8,8 @@ public class DamageZoneController : MonoBehaviour {
     public float pushbackAmount = 1f;
     // The size of the area
     public float pushbackZonePadding = 0.1f;
+	public float playerDisableDurration = 0.3f;
+	public GameObject owner;
 
     private BoxCollider2D damageZoneCollider;
 
@@ -28,21 +30,20 @@ public class DamageZoneController : MonoBehaviour {
 
     private void HandleCollision(Collision2D collision)
     {
-        HealthManager healthManager = collision.gameObject.GetComponent<HealthManager>();
-        if (healthManager != null)
-        {
-            if (!healthManager.isInvicible)
-            {
-                healthManager.TakeDamage(damageAmount);
-                PlayerController playerCtrl = collision.gameObject.GetComponent<PlayerController>();
-                if(playerCtrl != null)
-                {
-                    playerCtrl.disable();
-                }
-                Vector2 pushBackForce = GetPushBackDirection(collision) * pushbackAmount;
-                collision.rigidbody.AddForce(pushBackForce);
-            }
-        }
+		if (collision.gameObject != owner) {
+			HealthManager healthManager = collision.gameObject.GetComponent<HealthManager> ();
+			if (healthManager != null) {
+				if (!healthManager.isInvicible) {
+					healthManager.TakeDamage (damageAmount);
+					PlayerController playerCtrl = collision.gameObject.GetComponent<PlayerController> ();
+					if (playerCtrl != null) {
+						playerCtrl.disable (playerDisableDurration);
+					}
+					Vector2 pushBackForce = GetPushBackDirection (collision) * pushbackAmount;
+					collision.rigidbody.AddForce (pushBackForce);
+				}
+			}
+		}
     }
 
     // Gets the direction to push the player based on what side of the collider was hit.
