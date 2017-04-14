@@ -14,6 +14,11 @@ public class DoorBehavior : MonoBehaviour {
 
     }
 
+	public void Start(){
+		logicManager.CheckLogicSources ();
+		UpdateLogicState ();
+	}
+
     // Update things that depend on the door's state.
     public void UpdateLogicState()
     {
