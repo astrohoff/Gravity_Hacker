@@ -68,9 +68,13 @@ public class PlayerController : MonoBehaviour {
 				vel = player.velocity;
 				if (Input.GetKey ("d")) {
 					gameObject.transform.localScale = right;
-					if (orientation == 1 || orientation == 2) {
+					if (orientation == 1){ 
 						vel.x = speed;
 					} 
+					if (orientation == 2) {
+						gameObject.transform.localScale = left;
+						vel.x = speed;
+					}
 					if (orientation == 3) {
 						vel.y = -speed;
 					}
@@ -81,9 +85,13 @@ public class PlayerController : MonoBehaviour {
 
 				} else if (Input.GetKey ("a")) {
 					gameObject.transform.localScale = left;
-					if (orientation == 1 || orientation == 2) {
+					if (orientation == 1){ 
 						vel.x = -speed;
-					} 
+					}
+					if (orientation == 2) {
+						gameObject.transform.localScale = right;
+						vel.x = -speed;
+					}
 					if (orientation == 3) {
 						vel.y = speed;
 					}
@@ -201,8 +209,20 @@ public class PlayerController : MonoBehaviour {
 		}
 	}
 
+	void OnTriggerEnter2D(Collider2D coll){
+		if (coll.gameObject.CompareTag ("lazer")) {
+			disable (1f);
+		}
+	}
+
 	void OnCollisionEnter2D(Collision2D coll){
-		if (coll.gameObject.CompareTag ("ground")) {
+		if (coll.gameObject.CompareTag ("ground") && orientation == 1) {
+			canjump = true;
+		} else if (coll.gameObject.CompareTag ("roof") && orientation == 2) {
+			canjump = true;
+		} else if (coll.gameObject.CompareTag ("leftwall") && orientation == 3) {
+			canjump = true;
+		} else if (coll.gameObject.CompareTag ("rightwall") && orientation == 4) {
 			canjump = true;
 		}
 	}
@@ -221,4 +241,5 @@ public class PlayerController : MonoBehaviour {
 		disableTime = Time.time;
 
 	}
+		
 }

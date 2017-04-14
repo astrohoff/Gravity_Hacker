@@ -9,20 +9,14 @@ public class FireballController : MonoBehaviour {
 	Vector3 newScale;
 	// Use this for initialization
 	void Start () {
-		speed = 20f;
-		GameObject player = GameObject.Find ("Player");
-		if (player.GetComponent<Transform> ().localScale.x < 0) {
-			speed = -speed;
-			newScale = transform.localScale;
-			newScale.x = -1 * newScale.x;
-			transform.localScale = newScale;
-		}
+		speed = 12f;
 		temp = Time.time;
 	}
 	
 	// Update is called once per frame
 	void Update () {
-		gameObject.GetComponent<Rigidbody2D> ().velocity = new Vector2 (speed, 0f);
+		
+		gameObject.GetComponent<Rigidbody2D> ().velocity = new Vector2 (0f, -speed);
 		if (Time.time - temp > 2) {
 			Destroy (gameObject);
 		}
