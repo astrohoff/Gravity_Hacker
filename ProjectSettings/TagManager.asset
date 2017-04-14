@@ -16,6 +16,9 @@ TagManager:
   - boss
   - lazer
   - missile
+  - wallObject
+  - wall
+  - Key
   layers:
   - Default
   - TransparentFX
