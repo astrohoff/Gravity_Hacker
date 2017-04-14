@@ -1423,7 +1423,7 @@ Prefab:
     - target: {fileID: 212403128910581592, guid: 9cb12c67b9b5a2446b749488ed5dd4db,
         type: 2}
       propertyPath: m_SortingOrder
-      value: 2
+      value: -10
       objectReference: {fileID: 0}
     - target: {fileID: 114650708631124530, guid: 9cb12c67b9b5a2446b749488ed5dd4db,
         type: 2}
@@ -1433,21 +1433,41 @@ Prefab:
     - target: {fileID: 212403128910581592, guid: 9cb12c67b9b5a2446b749488ed5dd4db,
         type: 2}
       propertyPath: m_Color.r
-      value: 0.8602941
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 212403128910581592, guid: 9cb12c67b9b5a2446b749488ed5dd4db,
         type: 2}
       propertyPath: m_Color.g
-      value: 0.5213243
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 212403128910581592, guid: 9cb12c67b9b5a2446b749488ed5dd4db,
         type: 2}
       propertyPath: m_Color.b
-      value: 0.1581423
+      value: 1
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 61582944326775216, guid: 9cb12c67b9b5a2446b749488ed5dd4db, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: 9cb12c67b9b5a2446b749488ed5dd4db, type: 2}
   m_IsPrefabParent: 0
+--- !u!1 &1931359527 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1265026787313248, guid: 9cb12c67b9b5a2446b749488ed5dd4db,
+    type: 2}
+  m_PrefabInternal: {fileID: 1931359526}
+--- !u!61 &1931359528
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1931359527}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Size: {x: 0.64, y: 3.4133334}
 --- !u!1001 &1942729849
 Prefab:
   m_ObjectHideFlags: 0
