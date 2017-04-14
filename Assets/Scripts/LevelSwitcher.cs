@@ -19,4 +19,14 @@ public class LevelSwitcher : MonoBehaviour {
             SceneManager.LoadScene(nextSceneName);
         }
     }
+
+	public void LoadScene(){
+		Physics2D.gravity = initialGravity;
+		SceneManager.LoadScene(nextSceneName);
+	}
+
+	public void exit_game(){
+		Application.Quit ();
+	}
+		
 }
