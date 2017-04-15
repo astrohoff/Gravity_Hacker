@@ -10,6 +10,7 @@ public class DamageZoneController : MonoBehaviour {
     public float pushbackZonePadding = 0.1f;
 	public float playerDisableDurration = 0.3f;
 	public GameObject owner;
+	public string[] friendlyTags = new string[]{};
 
     private BoxCollider2D damageZoneCollider;
 
@@ -33,18 +34,32 @@ public class DamageZoneController : MonoBehaviour {
 		if (collision.gameObject != owner) {
 			HealthManager healthManager = collision.gameObject.GetComponent<HealthManager> ();
 			if (healthManager != null) {
-				if (!healthManager.isInvicible) {
-					healthManager.TakeDamage (damageAmount);
-					PlayerController playerCtrl = collision.gameObject.GetComponent<PlayerController> ();
-					if (playerCtrl != null) {
-						playerCtrl.disable (playerDisableDurration);
+				if (!CheckIsFriend(collision.gameObject.tag)) {					
+					if (!healthManager.isInvicible) {
+						healthManager.TakeDamage (damageAmount);
+						PlayerController playerCtrl = collision.gameObject.GetComponent<PlayerController> ();
+						if (playerCtrl != null) {
+							playerCtrl.disable (playerDisableDurration);
+						}
+						Vector2 pushBackForce = GetPushBackDirection (collision) * pushbackAmount;
+						collision.rigidbody.AddForce (pushBackForce);
 					}
-					Vector2 pushBackForce = GetPushBackDirection (collision) * pushbackAmount;
-					collision.rigidbody.AddForce (pushBackForce);
 				}
 			}
 		}
     }
+
+	private bool CheckIsFriend(string tag){
+		if (friendlyTags.Length == 0) {
+			//Debug.Log ("No friends");
+			return false;
+		} else if (Array.IndexOf (friendlyTags, tag) == -1) {
+			//Debug.Log ("Not a friend");
+			return false;
+		}
+		//Debug.Log ("Friend");
+		return true;
+	}
 
     // Gets the direction to push the player based on what side of the collider was hit.
     private Vector2 GetPushBackDirection(Collision2D collision)
