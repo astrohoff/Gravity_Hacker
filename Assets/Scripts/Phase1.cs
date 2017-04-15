@@ -8,6 +8,7 @@ public class Phase1 : MonoBehaviour {
 	Rigidbody2D boss;
 	public float speed, tempx;
 	public Transform trfoci,tlfoci,blfoci,brfoci;
+	public GameObject wrapper;
 	// Use this for initialization
 	void Start () {
 		right = new Vector2 (1, 0);
@@ -76,5 +77,9 @@ public class Phase1 : MonoBehaviour {
 			direction = temp;
 
 		}
+	}
+
+	void OnDestroy(){
+		Destroy (wrapper);
 	}
 }

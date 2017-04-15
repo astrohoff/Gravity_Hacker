@@ -22,6 +22,8 @@ TagManager:
   - Enemy
   - Bullet
   - Despawner
+  - Bullet
+  - bossAlien
   layers:
   - Default
   - TransparentFX
