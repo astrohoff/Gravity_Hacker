@@ -7,7 +7,7 @@ using System;
 // button GameObject, but only objects touching the knob part of the
 // button should affect its press. 
 public class ButtonPressDetector : MonoBehaviour {
-	private string[] unpressableTags = new string[]{"Bullet", "Key"};
+	private string[] unpressableTags = new string[]{"Bullet", "Key", "Enemy"};
     // ButtonBehavior to send updates to.
     public ButtonBehavior buttonBehavior;
 
