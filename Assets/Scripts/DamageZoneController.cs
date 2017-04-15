@@ -51,15 +51,14 @@ public class DamageZoneController : MonoBehaviour {
 
 	private bool CheckIsFriend(string tag){
 		if (friendlyTags.Length == 0) {
-			Debug.Log ("No friends");
+			//Debug.Log ("No friends");
 			return false;
-		} else if (Array.IndexOf (friendlyTags, collision.gameObject.tag) == -1) {
-			Debug.Log ("Not a friend");
+		} else if (Array.IndexOf (friendlyTags, tag) == -1) {
+			//Debug.Log ("Not a friend");
 			return false;
 		}
-		Debug.Log ("Friend");
+		//Debug.Log ("Friend");
 		return true;
-		friendlyTags.Length == 0 || 
 	}
 
     // Gets the direction to push the player based on what side of the collider was hit.
