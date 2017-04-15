@@ -19,6 +19,7 @@ TagManager:
   - wallObject
   - wall
   - Key
+  - Enemy
   layers:
   - Default
   - TransparentFX

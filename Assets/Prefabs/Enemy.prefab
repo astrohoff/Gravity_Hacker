@@ -28,7 +28,7 @@ GameObject:
   - component: {fileID: 114296484604022450}
   m_Layer: 9
   m_Name: Enemy
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -185,6 +185,8 @@ MonoBehaviour:
   pushbackZonePadding: 0.1
   playerDisableDurration: 0.3
   owner: {fileID: 0}
+  friendlyTags:
+  - Enemy
 --- !u!114 &114402942306898830
 MonoBehaviour:
   m_ObjectHideFlags: 1
