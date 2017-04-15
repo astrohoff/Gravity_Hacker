@@ -20,6 +20,8 @@ TagManager:
   - wall
   - Key
   - Enemy
+  - Bullet
+  - Despawner
   layers:
   - Default
   - TransparentFX
