@@ -5,7 +5,7 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour {
 
 	Rigidbody2D player;
-	public bool canjump, paused, disabled;
+	public bool canjump, paused, disabled, ispaused;
 	private float disableTimeLength = 0.8f;
 	Vector2 vel;
 	int orientation; // 1 = down, 2 = up, 3 = left, 4 = right
@@ -17,6 +17,7 @@ public class PlayerController : MonoBehaviour {
 	//public GameObject fireball;
 	//public Transform firePoint;
 	public GunBehavior gun;
+	public GameObject canvas;
 
 	void Start () {
 		player = GetComponent<Rigidbody2D> ();
@@ -26,6 +27,7 @@ public class PlayerController : MonoBehaviour {
 		speed = 8f;
 		orientation = 1;
 		disabled = false;
+		ispaused = false;
 
 		jumptime = 0f;
 		jumpstr = 8;
@@ -206,6 +208,19 @@ public class PlayerController : MonoBehaviour {
 				gun.Fire ();
 			}
 
+			if (Input.GetKeyDown (KeyCode.Escape)) {
+				if (!ispaused) {
+					Time.timeScale = 0;
+					ispaused = true;
+					canvas.SetActive (true);
+				}
+				else if (ispaused) {
+					Time.timeScale = 1;
+					ispaused = false;
+					canvas.SetActive (false);
+				}
+			}
+
 		}
 	}
 
@@ -219,10 +234,14 @@ public class PlayerController : MonoBehaviour {
 		}
 		if (coll.gameObject.CompareTag ("bossAlien")) {
 			gameObject.GetComponent<HealthManager> ().TakeDamage (20);
-			Vector3 direc = gameObject.transform.position - coll.transform.position;
+			/*Vector3 direc = gameObject.transform.position - coll.transform.position;
 			direc.Normalize ();
+			Debug.Log (direc);
 			disable (2f);
-			gameObject.GetComponent<Rigidbody2D> ().AddForce (direc * 10f);
+
+			vel.y = direc.x * 40f;
+			vel.x = direc.y * 40f;
+			player.velocity = vel;*/
 		}
 		if (coll.gameObject.CompareTag ("lazer")) {
 			gameObject.GetComponent<HealthManager> ().TakeDamage (15);
@@ -242,7 +261,9 @@ public class PlayerController : MonoBehaviour {
 	}
 
 	public void unpause(){
-		paused = false;
+		Time.timeScale = 1;
+		ispaused = false;
+		canvas.SetActive (false);
 	}
 
 	public void pause(){
