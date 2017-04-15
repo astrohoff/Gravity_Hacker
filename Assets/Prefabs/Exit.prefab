@@ -80,7 +80,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ed5c93c40d01b904d99788a16e7c5e5b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  nextSceneName: Boss1
+  nextSceneName: 
 --- !u!212 &212892334884613972
 SpriteRenderer:
   m_ObjectHideFlags: 1
