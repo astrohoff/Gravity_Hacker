@@ -19,6 +19,8 @@ TagManager:
   - wallObject
   - wall
   - Key
+  - Enemy
+  - Despawner
   - Bullet
   - bossAlien
   layers:

@@ -20,7 +20,13 @@ public class FlyingPlayerController : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		gameObject.transform.Rotate (new Vector3 (0, 0, .5f));
-		if(Time.time - timer > 20){
+		//if(Time.time - timer > 20){
+		//	Destroy (gameObject);
+		//}
+	}
+
+	private void OnCollisionEnter2D(Collision2D collision){
+		if (collision.gameObject.tag == "Despawner") {
 			Destroy (gameObject);
 		}
 	}
