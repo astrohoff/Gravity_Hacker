@@ -11,7 +11,7 @@ public class lazertrapcontroller1 : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		spot = Random.Range (-1, 9);
+		spot = Random.Range (2, 9);
 		Vector3 temp = new Vector3 (gameObject.transform.GetChild (0).position.x, (float)spot);
 		gameObject.transform.GetChild (0).position = temp;
 		speed = 6;

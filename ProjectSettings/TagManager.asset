@@ -19,6 +19,8 @@ TagManager:
   - wallObject
   - wall
   - Key
+  - Bullet
+  - bossAlien
   layers:
   - Default
   - TransparentFX

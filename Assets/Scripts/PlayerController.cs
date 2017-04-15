@@ -14,8 +14,8 @@ public class PlayerController : MonoBehaviour {
 	Vector2 upjump, downjump, rightjump,leftjump, jump;
 	Vector3 downgrav,upgrav,leftgrav,rightgrav;
 	//fireball data
-	public GameObject fireball;
-	public Transform firePoint;
+	//public GameObject fireball;
+	//public Transform firePoint;
 	public GunBehavior gun;
 
 	void Start () {
@@ -198,7 +198,7 @@ public class PlayerController : MonoBehaviour {
 
 
 			if (Input.GetKeyDown ("f")) {			
-				Instantiate (fireball, firePoint.position, firePoint.rotation);
+				gun.Fire ();
 
 			}
 
@@ -212,6 +212,20 @@ public class PlayerController : MonoBehaviour {
 	void OnTriggerEnter2D(Collider2D coll){
 		if (coll.gameObject.CompareTag ("lazer")) {
 			disable (1f);
+		}
+
+		if (coll.gameObject.CompareTag ("fireball")) {
+			gameObject.GetComponent<HealthManager> ().TakeDamage (5);
+		}
+		if (coll.gameObject.CompareTag ("bossAlien")) {
+			gameObject.GetComponent<HealthManager> ().TakeDamage (20);
+			Vector3 direc = gameObject.transform.position - coll.transform.position;
+			direc.Normalize ();
+			disable (2f);
+			gameObject.GetComponent<Rigidbody2D> ().AddForce (direc * 10f);
+		}
+		if (coll.gameObject.CompareTag ("lazer")) {
+			gameObject.GetComponent<HealthManager> ().TakeDamage (15);
 		}
 	}
 

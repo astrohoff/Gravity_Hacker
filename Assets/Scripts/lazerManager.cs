@@ -6,20 +6,24 @@ public class lazerManager : MonoBehaviour {
 	bool count,top;
 	public GameObject lazertrap, lazertrap1;
 	public Transform spawnposition,spawnposition1;
+	int counter;
+	float temptime;
 	// Use this for initialization
 	void Start () {
 		count = true;
 		top = false;
-
+		counter = 1;
 	}
 	
 	// Update is called once per frame
 	void Update () {
 		
+
 	}
 
 	void OnTriggerEnter2D(Collider2D coll){
 		if(coll.CompareTag("boss")){
+			
 			if (!count) {
 				if (top) {
 					Instantiate (lazertrap, spawnposition.position, spawnposition.rotation);
@@ -33,5 +37,13 @@ public class lazerManager : MonoBehaviour {
 				count = false;
 			}
 		}
+	}
+
+	void spawnLeftTrap(){
+		Instantiate (lazertrap1, spawnposition1.position, spawnposition.rotation);
+	}
+
+	void spawnTopTrap(){
+		Instantiate (lazertrap, spawnposition.position, spawnposition.rotation);
 	}
 }
