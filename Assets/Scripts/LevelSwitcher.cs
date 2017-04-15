@@ -5,23 +5,23 @@ using UnityEngine.SceneManagement;
 
 public class LevelSwitcher : MonoBehaviour {
     public string nextSceneName = "";
-	private Vector2 initialGravity;
+	private float initialGravityMagnitude;
 
 	private void Awake(){
-		initialGravity = Physics2D.gravity;
+		initialGravityMagnitude = Physics2D.gravity.magnitude;
 	}
 
 	private void OnTriggerEnter2D(Collider2D collider)
     {
         if(collider.tag == "Player")
         {
-			Physics2D.gravity = initialGravity;
+			Physics2D.gravity = initialGravityMagnitude * Vector2.down;
             SceneManager.LoadScene(nextSceneName);
         }
     }
 
 	public void LoadScene(){
-		Physics2D.gravity = initialGravity;
+		Physics2D.gravity = initialGravityMagnitude * Vector2.down;
 		SceneManager.LoadScene(nextSceneName);
 		Time.timeScale = 1;
 	}
