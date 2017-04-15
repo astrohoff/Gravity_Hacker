@@ -105,6 +105,7 @@ MonoBehaviour:
   pushbackZonePadding: 0.1
   playerDisableDurration: 0.1
   owner: {fileID: 0}
+  friendlyTags: []
 --- !u!212 &212556579069264274
 SpriteRenderer:
   m_ObjectHideFlags: 1
