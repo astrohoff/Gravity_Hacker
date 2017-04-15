@@ -7,13 +7,11 @@ EditorBuildSettings:
   m_Scenes:
   - enabled: 1
     path: Assets/Scenes/Tutorial.unity
-    guid: 7abcbde3c16b2804f9718fcdf76d3d89
   - enabled: 1
     path: Assets/Scenes/Tutorial2.unity
-    guid: a7273848db9b98a4b8b7b1a52aa067ef
   - enabled: 1
     path: Assets/Scenes/Level1.unity
-    guid: 4b080e19822a64649bdd19d7eb208fd7
   - enabled: 1
     path: Assets/Scenes/Level2.unity
-    guid: 00000000000000000000000000000000
+  - enabled: 1
+    path: Assets/Scenes/TitleScreen.unity

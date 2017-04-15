@@ -23,6 +23,7 @@ public class LevelSwitcher : MonoBehaviour {
 	public void LoadScene(){
 		Physics2D.gravity = initialGravity;
 		SceneManager.LoadScene(nextSceneName);
+		Time.timeScale = 1;
 	}
 
 	public void exit_game(){
