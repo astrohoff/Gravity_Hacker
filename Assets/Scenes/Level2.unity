@@ -100,7 +100,6 @@ GameObject:
   m_Component:
   - component: {fileID: 23277705}
   - component: {fileID: 23277704}
-  - component: {fileID: 23277706}
   m_Layer: 0
   m_Name: space
   m_TagString: Untagged
@@ -156,23 +155,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 45
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!95 &23277706
-Animator:
-  serializedVersion: 3
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 23277703}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: c91ac2e62f8db1b468bd38d474638417, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
 --- !u!1001 &84869998
 Prefab:
   m_ObjectHideFlags: 0
@@ -1861,6 +1843,11 @@ Prefab:
     - target: {fileID: 4664874956677928, guid: 86171980edd5d6f40b75420d646ffba7, type: 2}
       propertyPath: m_RootOrder
       value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 114872856631716792, guid: 86171980edd5d6f40b75420d646ffba7,
+        type: 2}
+      propertyPath: nextSceneName
+      value: Boss1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 86171980edd5d6f40b75420d646ffba7, type: 2}

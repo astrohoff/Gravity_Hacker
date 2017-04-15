@@ -11,7 +11,7 @@ public class MissileController : MonoBehaviour {
 	public float speed;
 	public GameObject player;
 	void Start () {
-		speed = 3f;
+		speed = 4f;
 		angle = gameObject.transform.rotation.eulerAngles.z;
 		angle = angle * Mathf.Deg2Rad;
 		velocity.x = Mathf.Cos (angle + Mathf.PI/2) * speed;
@@ -36,7 +36,7 @@ public class MissileController : MonoBehaviour {
 		velocity = gameObject.GetComponent<Rigidbody2D> ().velocity;
 		velocity.Normalize ();
 		anglebetween = Vector2.Angle (velocity, destination);
-		gameObject.transform.Rotate (new Vector3 (0, 0, anglebetween / 60));
+		gameObject.transform.Rotate (new Vector3 (0, 0, anglebetween / 30));
 		angle = gameObject.transform.rotation.eulerAngles.z;
 		angle = angle * Mathf.Deg2Rad;
 		velocity.x = Mathf.Cos (angle + Mathf.PI/2) * speed;
