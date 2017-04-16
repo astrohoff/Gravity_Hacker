@@ -446,7 +446,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1040111440691320}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 37.31, y: 9.08, z: 3.3789062}
+  m_LocalPosition: {x: 14.436171, y: -12.622317, z: 3.3789062}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4009372233002068}
@@ -582,7 +582,7 @@ BoxCollider2D:
   m_GameObject: {fileID: 1251534661641392}
   m_Enabled: 1
   m_Density: 1
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: 0cb77231a430b454fb792ff7ffcc3943, type: 2}
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_Offset: {x: 3.8200235, y: -0.007446289}
@@ -596,7 +596,7 @@ BoxCollider2D:
   m_GameObject: {fileID: 1256032940151286}
   m_Enabled: 1
   m_Density: 1
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: 0cb77231a430b454fb792ff7ffcc3943, type: 2}
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_Offset: {x: 3.8200235, y: -0.007446289}
@@ -616,6 +616,9 @@ MonoBehaviour:
   damageAmount: 1
   pushbackAmount: 200
   pushbackZonePadding: 0.1
+  playerDisableDurration: 0.3
+  owner: {fileID: 0}
+  friendlyTags: []
 --- !u!114 &114184889257157540
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -673,6 +676,9 @@ MonoBehaviour:
   damageAmount: 1
   pushbackAmount: 200
   pushbackZonePadding: 0.1
+  playerDisableDurration: 0.3
+  owner: {fileID: 0}
+  friendlyTags: []
 --- !u!212 &212212599165513468
 SpriteRenderer:
   m_ObjectHideFlags: 1

@@ -18,8 +18,11 @@ public class LazerController : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		logicManager.CheckLogicSources ();
-		UpdateLogicState ();
+		if (logicManager != null) {
+			logicManager.CheckLogicSources ();
+			UpdateLogicState ();
+		}
+
 	}
 	
 	// Update is called once per frame
