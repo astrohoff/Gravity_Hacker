@@ -276,5 +276,11 @@ public class PlayerController : MonoBehaviour {
 		disableTime = Time.time;
 
 	}
-		
+
+	private void OnDestroy(){
+		GameObject exit = GameObject.Find ("Exit");
+		if (exit != null) {
+			exit.GetComponent<LevelSwitcher> ().OnPlayerDeath ();
+		}
+	}
 }

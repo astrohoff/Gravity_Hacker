@@ -7,6 +7,7 @@ public class GunBehavior : MonoBehaviour {
 	public Transform bulletSpawn;
 	public float bulletSpeed = 20f;
 	public Color bulletColor = new Color (1, 0.5f, 0);
+	public float bulletDamage = 1;
 	private Transform user;
 
 	private void Awake(){
@@ -19,7 +20,9 @@ public class GunBehavior : MonoBehaviour {
 		newBullet.transform.localPosition = Vector3.zero;
 		newBullet.transform.localRotation = Quaternion.identity;
 		newBullet.GetComponent<Rigidbody2D> ().velocity = transform.right * bulletSpeed * user.localScale.normalized.x;
-		newBullet.GetComponent<DamageZoneController> ().owner = transform.parent.gameObject;
+		DamageZoneController dmgZone = newBullet.GetComponent<DamageZoneController> ();
+		dmgZone.owner = transform.parent.gameObject;
+		dmgZone.damageAmount = bulletDamage;
 		newBullet.GetComponent<SpriteRenderer> ().color = bulletColor;
 		newBullet.transform.parent = null;
 	}

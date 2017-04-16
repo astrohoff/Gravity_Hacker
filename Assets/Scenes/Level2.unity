@@ -1944,7 +1944,7 @@ Prefab:
     - target: {fileID: 114047615580505958, guid: 68827cadc40dc2d4ba7759de0bcc8855,
         type: 2}
       propertyPath: logicSources.Array.size
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 114047615580505958, guid: 68827cadc40dc2d4ba7759de0bcc8855,
         type: 2}
