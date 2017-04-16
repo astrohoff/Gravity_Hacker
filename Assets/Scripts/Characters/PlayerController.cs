@@ -277,5 +277,10 @@ public class PlayerController : MonoBehaviour {
 
 	}
 
-			
+	private void OnDestroy(){
+		GameObject exit = GameObject.Find ("Exit");
+		if (exit != null) {
+			exit.GetComponent<LevelSwitcher> ().OnPlayerDeath ();
+		}
+	}
 }
