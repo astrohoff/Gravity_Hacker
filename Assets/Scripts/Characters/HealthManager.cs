@@ -43,9 +43,23 @@ public class HealthManager : MonoBehaviour {
             {
                 keyManager.DropKey();
             }
+			Destroy (keyManager);
         }
-        Destroy(gameObject);
+		StartCoroutine (DeathAnimationRoutine ());
     }
+
+	private IEnumerator DeathAnimationRoutine(){
+		material.color = Color.red;
+		int frameCount = 30;
+		Vector3 initialScale = transform.localScale;
+		yield return new WaitForSeconds (0.25f);
+		Vector3 scaleStep = initialScale / frameCount;
+		for (int i = 0; i < frameCount; i++) {
+			transform.localScale = Vector3.Lerp (initialScale, Vector3.zero, i / (float)frameCount);
+			yield return null;
+		}
+		Destroy (gameObject);
+	}
 
     private IEnumerator InvicibilityRoutine()
     {
