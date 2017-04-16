@@ -156,6 +156,7 @@ MonoBehaviour:
   bulletSpawn: {fileID: 4657973676849070}
   bulletSpeed: 50
   bulletColor: {r: 1, g: 0.5019608, b: 0, a: 1}
+  bulletDamage: 5
 --- !u!114 &114280441891157626
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -209,6 +210,7 @@ MonoBehaviour:
     m_Bits: 4294967035
   gun: {fileID: 114033070779837728}
   timeBetweenShots: 0.5
+  fieldOfView: 150
 --- !u!114 &114873321157102364
 MonoBehaviour:
   m_ObjectHideFlags: 1

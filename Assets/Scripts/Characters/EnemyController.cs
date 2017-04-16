@@ -27,6 +27,7 @@ public class EnemyController : MonoBehaviour {
 	public GunBehavior gun;
 	public float timeBetweenShots = 0.5f;
 	private float previousShotTime = 0;
+	public float fieldOfView = 150;
 
     public enum EnemyState { Wander, Engage};
 
@@ -117,13 +118,19 @@ public class EnemyController : MonoBehaviour {
     }
 
 	private bool CheckCanSeePlayer(){
+		if(player == null){
+			return false;
+		}
 		Vector2 playerDirection = -(transform.position - player.position);
 		RaycastHit2D hit = Physics2D.Raycast (transform.position, playerDirection, float.MaxValue, playerRaycastLayers);
 		if (hit.collider == null) {
 			return false;
 		}
+		if (fieldOfView > 180) {
+			fieldOfView = 180;
+		}
 		if (hit.collider.tag == "Player") {
-			return Vector2.Angle (transform.right * transform.localScale.normalized.x, playerDirection) < 90;
+			return Vector2.Angle (transform.right * transform.localScale.normalized.x, playerDirection) < fieldOfView / 2;
 		}
 		return false;
 	}
