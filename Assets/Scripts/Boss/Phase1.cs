@@ -8,7 +8,7 @@ public class Phase1 : MonoBehaviour {
 	Rigidbody2D boss;
 	public float speed, tempx;
 	public Transform trfoci,tlfoci,blfoci,brfoci;
-	public GameObject wrapper;
+	public GameObject wrapper,canvas,canvas2;
 	// Use this for initialization
 	void Start () {
 		right = new Vector2 (1, 0);
@@ -81,5 +81,7 @@ public class Phase1 : MonoBehaviour {
 
 	void OnDestroy(){
 		Destroy (wrapper);
+		canvas.SetActive (true);
+		canvas2.SetActive (true);
 	}
 }
