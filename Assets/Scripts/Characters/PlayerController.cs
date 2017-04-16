@@ -19,6 +19,8 @@ public class PlayerController : MonoBehaviour {
 	public GunBehavior gun;
 	public GameObject canvas;
 
+	private List<GameObject> touches = new List<GameObject> ();
+
 	void Start () {
 		player = GetComponent<Rigidbody2D> ();
 		canjump = true;
@@ -112,8 +114,10 @@ public class PlayerController : MonoBehaviour {
 					player.velocity = vel;
 				}
 
-
 				if (Input.GetKeyDown ("space")) {
+					
+					canjump = CheckCanJump ();
+
 					if (canjump) {
 						canjump = false;
 						jumptime = Time.time;
@@ -247,9 +251,9 @@ public class PlayerController : MonoBehaviour {
 			gameObject.GetComponent<HealthManager> ().TakeDamage (15);
 		}
 	}
-
+		
 	void OnCollisionEnter2D(Collision2D coll){
-		if (coll.gameObject.CompareTag ("ground") && orientation == 1) {
+		/*if (coll.gameObject.CompareTag ("ground") && orientation == 1) {
 			canjump = true;
 		} else if (coll.gameObject.CompareTag ("roof") && orientation == 2) {
 			canjump = true;
@@ -257,7 +261,45 @@ public class PlayerController : MonoBehaviour {
 			canjump = true;
 		} else if (coll.gameObject.CompareTag ("rightwall") && orientation == 4) {
 			canjump = true;
+		}*/
+
+		// Add object to list of objects player is touching.
+		touches.Add (coll.gameObject);
+	}
+
+	string GetCurrentOrientationGroundString(){
+		switch (orientation) {
+		case 2:
+			return "roof";
+		case 3:
+			return "leftwall";
+		case 4:
+			return "rightwall";
+		default:
+			return "ground";
 		}
+	}
+
+	// Checks a list of objects player is touching to see if any of the are the current ground.
+	bool CheckCanJump(){
+		string groundString = GetCurrentOrientationGroundString ();
+		for (int i = 0; i < touches.Count; i++) {
+			if (touches [i] == null) {
+				touches.RemoveAt (i);
+				i--;
+			} else {
+
+				if (touches [i].tag == groundString) {
+					return true;
+				}
+			}
+		}
+		return false;
+	}
+
+	// Remove objects from touching list when collision ends.
+	void OnCollisionExit2D(Collision2D collision){
+		touches.Remove (collision.gameObject);
 	}
 
 	public void unpause(){

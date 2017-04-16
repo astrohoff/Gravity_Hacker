@@ -16,6 +16,7 @@ public class FloorTiler : MonoBehaviour {
 	public int orderInLayer = 0;
 	private int oldOrderInLayer = -1;
 
+
 	// Use this for initialization
 	void Start () {
 	}
@@ -98,12 +99,12 @@ public class FloorTiler : MonoBehaviour {
 		Vector2 center, size;
 
 		// Generate ground collider.
-		center = (Vector2)totalBounds.center + new Vector2(0, -totalBounds.size.y / 4);
+		center = (Vector2)totalBounds.center + new Vector2(0, totalBounds.size.y / 4);
 		size = new Vector2 (totalBounds.size.x - 2 * colliderInset, totalBounds.size.y / 2);
 		SpawnColliderObject ("ground", center, size);
 
 		// Generate roof collider.
-		center = (Vector2)totalBounds.center + new Vector2(0, totalBounds.size.y / 4);
+		center = (Vector2)totalBounds.center + new Vector2(0, -totalBounds.size.y / 4);
 		size = new Vector2 (totalBounds.size.x - 2 * colliderInset, totalBounds.size.y / 2);
 		SpawnColliderObject ("roof", center, size);
 
@@ -115,7 +116,7 @@ public class FloorTiler : MonoBehaviour {
 		// Generate right wall collider.
 		center = (Vector2)totalBounds.center + new Vector2(-totalBounds.size.x / 4, 0);
 		size = new Vector2 (totalBounds.size.x / 2, totalBounds.size.y - 2 * colliderInset);
-		SpawnColliderObject ("leftwall", center, size);
+		SpawnColliderObject ("rightwall", center, size);
 	}
 
 	private void SpawnColliderObject(string tag, Vector3 center, Vector3 size){

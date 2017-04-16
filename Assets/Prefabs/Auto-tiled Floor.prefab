@@ -260,6 +260,9 @@ MonoBehaviour:
   floorSprite: {fileID: 21300000, guid: a6e45d69ff29882418514307af73217a, type: 3}
   tileCount: 1
   colliderInset: 0.025
+  flipInside: 0
+  orderInLayer: 0
+  physicsMaterial: {fileID: 6200000, guid: 3626fe8e008014f6bbd19bb72937b311, type: 2}
 --- !u!212 &212021922858680780
 SpriteRenderer:
   m_ObjectHideFlags: 1
