@@ -24,7 +24,7 @@ public class HealthBarManager : MonoBehaviour {
 		hp = boss.GetComponent<HealthManager> ().health;
 		temp.x = hp * increment;
 		gameObject.transform.localScale = temp;
-		if (hp < lasthp) {
+		//if (hp < lasthp) {
 			/*Debug.Log (boss.transform.rotation.eulerAngles.z);
 			if (boss.transform.rotation.eulerAngles.z == 90) {
 				gameObject.transform.position = gameObject.transform.position - new Vector3 (0, (width / maxhp) * (lasthp - hp), 0);
@@ -39,8 +39,8 @@ public class HealthBarManager : MonoBehaviour {
 			else if (boss.transform.localScale.x < 0) {
 				gameObject.transform.position = gameObject.transform.position + new Vector3 ((width / maxhp) * (lasthp - hp), 0, 0);
 			}*/
-			gameObject.transform.localPosition = gameObject.transform.localPosition - new Vector3 ((width / maxhp) * (lasthp - hp), 0, 0);
-		}
-		lasthp = hp;
+		//	gameObject.transform.localPosition = gameObject.transform.localPosition - new Vector3 ((width / maxhp) * (lasthp - hp), 0, 0);
+	//	}
+		//lasthp = hp;
 	}
 }
