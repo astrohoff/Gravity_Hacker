@@ -6,7 +6,7 @@ using System.Collections;
 public class ButtonBehavior : MonoBehaviour
 {
     // List of GameObjects that the button controls.
-    public GameObject[] connectedDevices;
+    public GameObject typeIndicator;
     // Colors that indicate the button's state.
     public Color unpressedColor = new Color(0.5f, 0, 0);
     public Color pressedColor = new Color(1, 0, 0);
@@ -24,6 +24,9 @@ public class ButtonBehavior : MonoBehaviour
         // Initialize variables.
         pressingObjects = new List<GameObject>();
         logicManager = GetComponent<LogicManager>();
+		if (!stayActive) {
+			typeIndicator.SetActive (false);
+		}
     }
 
     // Before 1st frame...
