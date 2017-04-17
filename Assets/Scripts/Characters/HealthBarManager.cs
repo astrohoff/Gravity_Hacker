@@ -25,7 +25,7 @@ public class HealthBarManager : MonoBehaviour {
 		temp.x = hp * increment;
 		gameObject.transform.localScale = temp;
 		if (hp < lasthp) {
-			Debug.Log (boss.transform.rotation.eulerAngles.z);
+			/*Debug.Log (boss.transform.rotation.eulerAngles.z);
 			if (boss.transform.rotation.eulerAngles.z == 90) {
 				gameObject.transform.position = gameObject.transform.position - new Vector3 (0, (width / maxhp) * (lasthp - hp), 0);
 				Debug.Log ("taking damage while drav = right");
@@ -38,7 +38,8 @@ public class HealthBarManager : MonoBehaviour {
 			}
 			else if (boss.transform.localScale.x < 0) {
 				gameObject.transform.position = gameObject.transform.position + new Vector3 ((width / maxhp) * (lasthp - hp), 0, 0);
-			}
+			}*/
+			gameObject.transform.localPosition = gameObject.transform.localPosition - new Vector3 ((width / maxhp) * (lasthp - hp), 0, 0);
 		}
 		lasthp = hp;
 	}
