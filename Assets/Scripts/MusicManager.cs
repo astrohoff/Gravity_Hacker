@@ -30,8 +30,7 @@ public class MusicManager : MonoBehaviour{
 				audioSource.loop = true;
 			}
 		} else if (SceneManager.GetActiveScene ().buildIndex == 5) {
-			if (audioSource.clip != boss && audioSource.clip != win) {
-				Debug.Log ("Setting clip to boss");
+			if (audioSource.loop && audioSource.clip != boss && audioSource.clip != win) {
 				audioSource.clip = boss;
 			}
 			if (audioSource.clip == boss && !audioSource.isPlaying) {
