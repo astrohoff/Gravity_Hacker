@@ -83,5 +83,6 @@ public class Phase1 : MonoBehaviour {
 		Destroy (wrapper);
 		canvas.SetActive (true);
 		canvas2.SetActive (true);
+		GameObject.Find ("Music Manager").GetComponent<MusicManager> ().PlayWin ();
 	}
 }
